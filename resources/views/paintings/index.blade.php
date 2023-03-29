@@ -84,25 +84,15 @@
                         <div id="style-collapseOne" class="accordion-collapse collapse show"
                             aria-labelledby="style-headingOne">
                             <div class="accordion-body filter-container">
+                                @foreach($styles as $style)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Импрессионизм
+                                    <input class="form-check-input" type="checkbox" value="{{ $style->id }}"
+                                        id="{{ $style->name }}">
+                                    <label class="form-check-label" for="{{ $style->name }}">
+                                        {{ $style->name }}
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Авангардизм
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Кубизм
-                                    </label>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -117,19 +107,15 @@
                         <div id="plot-collapseTwo" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body filter-container">
+                                @foreach($plots as $plot)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Абстракции
+                                    <input class="form-check-input" type="checkbox" value="{{ $plot->id }}"
+                                        id="{{ $plot->name }}">
+                                    <label class="form-check-label" for="{{ $plot->name }}">
+                                        {{ $plot->name }}
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Пейзаж
-                                    </label>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -144,19 +130,15 @@
                         <div id="technique-collapseThree" class="accordion-collapse collapse"
                             aria-labelledby="technique-headingThree">
                             <div class="accordion-body filter-cintainer">
+                                @foreach($techniques as $technique)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Акрил
+                                    <input class="form-check-input" type="checkbox" value="{{ $technique->id }}"
+                                        id="{{ $technique->name }}">
+                                    <label class="form-check-label" for="{{ $technique->name }}">
+                                        {{ $technique->name }}
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Масло
-                                    </label>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -171,25 +153,15 @@
                         <div id="material-collapseThree" class="accordion-collapse collapse"
                             aria-labelledby="material-headingThree">
                             <div class="accordion-body filter-cintainer">
+                                @foreach($materials as $material)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Холст
+                                    <input class="form-check-input" type="checkbox" value="{{ $material->id }}"
+                                        id="{{ $material->name }}">
+                                    <label class="form-check-label" for="{{ $material->name }}">
+                                        {{ $material->name }}
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Бумага
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Картон
-                                    </label>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
