@@ -1,0 +1,87 @@
+/* .section__container {
+    font-family: "Arsenica";
+    font-weight: 300;
+    font-style: italic;
+
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 700px;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+} */
+
+.art__card-body {
+    position: relative;
+    color: #fff;
+}
+
+.art__card-container {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-light-brown);
+    position: absolute;
+    top: -45px;
+    left: 0;
+    padding: 25px;
+    gap: 7px;
+}
+
+.arts {
+    position: relative;
+    z-index: 1;
+}
+
+.arts__container {
+    font-family: "Roboto";
+}
+
+.arts__footer {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    background: var(--color-light-brown);
+    height: 450px;
+    left: 0;
+    right: 0;
+    bottom: -356px;
+    z-index: -1;
+    position: absolute;
+}
+
+.art__card-artist {
+    font-weight: 400;
+    font-style: normal;
+}
+
+.art__card-title {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    width: 190px;
+    text-transform: uppercase;
+}
+
+.art__card-button {
+    margin-top: 12px;
+    display: flex;
+    gap: 26px;
+    cursor: pointer;
+    color: var(--color-dark-brown);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.arts__btn-more {
+    margin-bottom: 70px;
+}

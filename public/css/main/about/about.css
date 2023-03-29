@@ -1,0 +1,94 @@
+.about {
+    margin-bottom: 100px;
+}
+
+.about__container {
+    padding: 230px 0px;
+    font-family: "Arsenica";
+    font-weight: 300;
+    font-style: italic;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 700px;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+}
+
+.about__title {
+    font-size: 28px;
+    text-align: center;
+    width: 520px;
+}
+
+.about__line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-dark-brown);
+}
+
+/* .about__description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+
+    color: var(--color-dark-brown);
+
+    font-style: normal;
+} */
+
+/* .about__description-sub__title {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+} */
+
+.about__description-information {
+    font-family: "Roboto";
+    text-align: center;
+}
+
+.about__picture {
+    position: absolute;
+
+    width: 400px;
+    height: 100%;
+}
+
+#about__picture-1 {
+    left: -95%;
+
+    background: url("../../../images/about/image1.png");
+}
+
+#about__picture-2 {
+    top: 25%;
+    right: -95%;
+
+    background: url("../../../images/about/image2.png");
+}
+
+#about__picture-2::before {
+    content: "";
+    position: absolute;
+    left: -25%;
+    bottom: -15%;
+    transform: rotate(-28deg);
+
+    background: url("../../../images/brush.png");
+    background-position: center;
+    background-size: contain;
+    width: 260px;
+    height: 260px;
+}
