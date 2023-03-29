@@ -16,14 +16,14 @@
             <div class="row row-cols-1 row-cols-md-4 g-5 arts__container">
                 <div class="col element-animation">
                     <div class="card border-0">
-                        <img src="{{ asset('../../images/arts/image1.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('../../images/main/arts/image1.jpg') }}" class="card-img-top" alt="...">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
                                 <p class="card-title art__card-title">Endless depth of green waves</p>
                                 <div class="art__card-button">
                                     <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/arts/arrow.svg') }}" alt="">
+                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -31,14 +31,14 @@
                 </div>
                 <div class="col element-animation">
                     <div class="card border-0 mt-5">
-                        <img src="{{ asset('../../images/arts/image2.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('../../images/main/arts/image2.jpg') }}" class="card-img-top" alt="...">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
                                 <p class="card-title art__card-title">Endless depth of green waves</p>
                                 <div class="art__card-button">
                                     <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/arts/arrow.svg') }}" alt="">
+                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -46,14 +46,14 @@
                 </div>
                 <div class="col element-animation">
                     <div class="card border-0">
-                        <img src="{{ asset('../../images/arts/image3.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('../../images/main/arts/image3.jpg') }}" class="card-img-top" alt="...">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
                                 <p class="card-title art__card-title">Endless depth of green waves</p>
                                 <div class="art__card-button">
                                     <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/arts/arrow.svg') }}" alt="">
+                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -61,14 +61,14 @@
                 </div>
                 <div class="col element-animation">
                     <div class="card border-0 mt-5">
-                        <img src="{{ asset('../../images/arts/image4.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('../../images/main/arts/image4.jpg') }}" class="card-img-top" alt="...">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
                                 <p class="card-title art__card-title">Endless depth of green waves</p>
                                 <div class="art__card-button">
                                     <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/arts/arrow.svg') }}" alt="">
+                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
