@@ -197,120 +197,23 @@
             </div>
             <div class="col-lg-9 col-xs-12">
                 <div class="grid paintings-container" id="grid">
+                    @foreach($paintings as $painting)
                     <div class="item painting-card">
                         <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p1.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Платон Стерхов</div>
-                            <div class="painting-title">Destiny II Painting</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">6,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p5.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">A LA MAISON</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">8,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p6.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Still life with wild flowers</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">4,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p3.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Cactus Garden Painting</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">3,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p4.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Dreamer</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">7,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/img2.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Infinity</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">9,000.00 Р</div>
-                        </div>
-                    </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/water-painting.jpg') }}" alt=""
+                            <img src="{{ asset('images/paintings/'. $painting->image) }}" alt="{{ $painting->title }}"
                                 class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Spring forest</div>
+                            <div class="artist-name">{{ $painting->artist->name }} {{ $painting->artist->surname }}
+                            </div>
+                            <div class="painting-title">{{ $painting->title }}</div>
                             <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
+                                <div class="painting-size">{{ $painting->width }}' ш X {{ $painting->height }}'в</div>
                                 <div class="painting-technique">Масло</div>
                             </div>
 
-                            <div class="painting-price">6,000.00 Р</div>
+                            <div class="painting-price">{{ $painting->price }} Р</div>
                         </div>
                     </div>
-
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/p7.jpg') }}" alt="" class="painting-img mb-2">
-                            <div class="artist-name">Анна Паюсова</div>
-                            <div class="painting-title">Carla</div>
-                            <div class="painting-description">
-                                <div class="painting-size">24'ш X 24'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
-
-                            <div class="painting-price">6,000.00 Р</div>
-                        </div>
-                    </div>
-
-
+                    @endforeach
                 </div>
             </div>
         </div>
