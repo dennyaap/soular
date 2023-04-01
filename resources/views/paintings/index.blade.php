@@ -48,19 +48,17 @@
                     <div class="header-sort__title d-none d-sm-none d-lg-block">СОРТИРОВАТЬ ПО</div>
                     <div class="header-sort__criterions d-flex gap-4">
                         <div class="header-sort__criterion d-flex align-items-center gap-3">
-                            <label for="size" class="form-label d-none d-sm-none d-lg-block">РАЗМЕР</label>
-                            <select class="form-select header-sort__select" id="size">
-                                <option selected>По умолчанию</option>
-                                <option value="1">По убыванию</option>
-                                <option value="2">По возрастанию</option>
+                            <label for="sortSelectWidth" class="form-label d-none d-sm-none d-lg-block">РАЗМЕР</label>
+                            <select class="form-select header-sort__select" id="sortSelectWidth">
+                                <option value="desc" selected>По убыванию</option>
+                                <option value="asc">По возрастанию</option>
                             </select>
                         </div>
                         <div class="header-sort__criterion d-flex align-items-center gap-3">
-                            <label for="artist" class="form-label d-none d-sm-none d-lg-block">ЦЕНА</label>
-                            <select class="form-select header-sort__select">
-                                <option selected>По умолчанию</option>
-                                <option value="1">По убыванию</option>
-                                <option value="2">По возрастанию</option>
+                            <label for="sortSelectPrice" class="form-label d-none d-sm-none d-lg-block">ЦЕНА</label>
+                            <select class="form-select header-sort__select" id="sortSelectPrice">
+                                <option value="desc" selected>По убыванию</option>
+                                <option value="asc">По возрастанию</option>
                             </select>
                         </div>
                     </div>
@@ -168,31 +166,42 @@
                 </div>
             </div>
             <div class="col-lg-9 col-xs-12">
-                <div class="grid paintings-container" id="grid">
-                    @foreach($paintings as $painting)
-                    <div class="item painting-card">
-                        <div class="item-content d-flex flex-column gap-1">
-                            <img src="{{ asset('images/paintings/'. $painting->image) }}" alt="{{ $painting->title }}"
-                                class="painting-img mb-2">
-                            <div class="artist-name">{{ $painting->artist->name }} {{ $painting->artist->surname }}
-                            </div>
-                            <div class="painting-title">{{ $painting->title }}</div>
-                            <div class="painting-description">
-                                <div class="painting-size">{{ $painting->width }}' ш X {{ $painting->height }}'в</div>
-                                <div class="painting-technique">Масло</div>
-                            </div>
+                <div class="paintings-container" id="painting-container">
+                    <div class="grid">
 
-                            <div class="painting-price">{{ $painting->price }} Р</div>
-                        </div>
                     </div>
-                    @endforeach
+                    <!-- <div class="grid"> -->
+                    <!-- @foreach($paintings as $painting)
+                        <div class="grid-item painting-card" data-size="{{ $painting->width + $painting->height }}"
+                            data-price="{{ $painting->price }}">
+                            <div class="item-content d-flex flex-column gap-1">
+                                <img src="{{ asset('images/paintings/'. $painting->image) }}"
+                                    alt="{{ $painting->title }}" class="painting-img mb-2">
+                                <div class="artist-name">{{ $painting->artist->name }} {{ $painting->artist->surname }}
+                                </div>
+                                <div class="painting-title">{{ $painting->title }}</div>
+                                <div class="painting-description">
+                                    <div class="painting-size">{{ $painting->width }}' ш X {{ $painting->height }}'в
+                                    </div>
+                                    <div class="painting-technique">Масло</div>
+                                </div>
+
+                                <div class="painting-price">{{ $painting->price }} Р</div>
+                            </div>
+                        </div>
+                        @endforeach -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
-
-
-
 @endsection()
+
+@push('script')
+<script src="{{ asset('js/fetch.js') }}"></script>
+<script src="{{ asset('js/product.js') }}"></script>
+<script src="{{ asset('js/products/createCards.js') }}"></script>
+<script src="{{ asset('js/products/script.js') }}"></script>
+@endpush

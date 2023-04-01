@@ -1,5 +1,5 @@
-var grid = new Muuri(".grid", {
-    dragEnabled: true,
+let grid = new Muuri(".grid", {
+    dragEnabled: false,
     layout: {
         fillGaps: true,
     },
@@ -7,6 +7,5 @@ var grid = new Muuri(".grid", {
 
 window.addEventListener("load", function () {
     grid.refreshItems().layout();
-
-    document.body.classList.add("images-loaded");
+    // document.body.classList.add("images-loaded");
 });

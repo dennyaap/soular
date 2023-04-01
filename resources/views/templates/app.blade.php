@@ -21,6 +21,7 @@
         @yield('content')
         @include('inc.footer')
         <script src="{{ asset('js/muuri.js') }}"></script>
+
         <script src="{{ asset('js/web-animations.min.js') }}"></script>
         <script src="{{ asset('js/script.js') }}"></script>
 

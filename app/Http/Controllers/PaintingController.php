@@ -31,4 +31,8 @@ class PaintingController extends Controller
 
         return view('paintings.index', compact('paintings', 'plots', 'styles', 'techniques', 'materials'));
     }
+
+    public function getAllProducts() {
+        return Painting::all();
+    }
 }
