@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::controller(PaintingController::class)->group(function() {
     Route::get('/', 'index')->name('index');
     Route::get('/paintings', 'paintings')->name('paintings.index');
-    Route::get('/getAllProducts', 'getAllProducts')->name('getAllProducts');
+    Route::post('/paintings/getAll', 'getAll')->name('paintings.getAll');
 
 });

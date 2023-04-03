@@ -32,7 +32,13 @@ class PaintingController extends Controller
         return view('paintings.index', compact('paintings', 'plots', 'styles', 'techniques', 'materials'));
     }
 
-    public function getAllProducts() {
-        return Painting::all();
+    public function getAll(Request $request) {
+        $paintings = [];
+
+        if ($request->data['data']['sortBy']) {
+            $paintings = Painting::orderBy($request->data['data']['sortBy'], $request->data['data']['typeSort'])->get();
+        }
+
+        return $paintings;
     }
 }

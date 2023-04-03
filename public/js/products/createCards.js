@@ -1,11 +1,6 @@
 const cardsContainer = document.getElementById("painting-container");
 
-const sortSelectPriceElement = document.getElementById("sortSelectPrice");
-const sortSelectWidthElement = document.getElementById("sortSelectWidth");
-
-async function createCards() {
-    let products = await getAllProducts();
-
+async function createCards(products) {
     let cardElements = products.map((product) => {
         return createCard(product);
     });

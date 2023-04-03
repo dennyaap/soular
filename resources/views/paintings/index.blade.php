@@ -48,17 +48,15 @@
                     <div class="header-sort__title d-none d-sm-none d-lg-block">СОРТИРОВАТЬ ПО</div>
                     <div class="header-sort__criterions d-flex gap-4">
                         <div class="header-sort__criterion d-flex align-items-center gap-3">
-                            <label for="sortSelectWidth" class="form-label d-none d-sm-none d-lg-block">РАЗМЕР</label>
-                            <select class="form-select header-sort__select" id="sortSelectWidth">
-                                <option value="desc" selected>По убыванию</option>
-                                <option value="asc">По возрастанию</option>
+                            <select class="form-select header-sort__select" id="sortBySelect">
+                                <option value="price" selected>Цена</option>
+                                <option value="width">Размер</option>
                             </select>
                         </div>
                         <div class="header-sort__criterion d-flex align-items-center gap-3">
-                            <label for="sortSelectPrice" class="form-label d-none d-sm-none d-lg-block">ЦЕНА</label>
-                            <select class="form-select header-sort__select" id="sortSelectPrice">
-                                <option value="desc" selected>По убыванию</option>
-                                <option value="asc">По возрастанию</option>
+                            <select class="form-select header-sort__select" id="sortTypeSelect">
+                                <option value="asc" selected>По возрастанию</option>
+                                <option value="desc">По убыванию</option>
                             </select>
                         </div>
                     </div>
@@ -85,7 +83,7 @@
                                 @foreach($styles as $style)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $style->id }}"
-                                        id="{{ $style->name }}">
+                                        id="{{ $style->name }}" onclick="selectStyle(this)">
                                     <label class="form-check-label" for="{{ $style->name }}">
                                         {{ $style->name }}
                                     </label>
@@ -201,6 +199,71 @@
 
 @push('script')
 <script src="{{ asset('js/fetch.js') }}"></script>
+<script src="{{ asset('js/product.js') }}"></script>
+<script>
+//DOM elements
+const sortBySelectElement = document.getElementById("sortBySelect");
+const sortTypeSelectElement = document.getElementById("sortTypeSelect");
+
+let products = [];
+
+function hideCards(cards) {
+    grid.hide(cards);
+}
+
+function showCards(products, sortBy, typeSort) {
+    createCards(products).then((data) => {
+        const newItems = grid.add(data, {
+            active: false
+        });
+        grid.show(newItems);
+    });
+}
+
+
+function sortCards(products) {
+
+}
+
+let sortBy = 'price';
+let typeSort = 'asc';
+let styleId = '';
+
+
+
+(async () => {
+    products = await getAllProducts(`{{ csrf_token() }}`, {
+        sortBy,
+        typeSort
+    });
+
+    showCards(products);
+})();
+
+sortBySelectElement.addEventListener("change", async (e) => {
+    sortBy = e.target.value;
+    products = await getAllProducts(`{{ csrf_token() }}`, {
+        sortBy,
+        typeSort,
+        selectStyleId
+    });
+
+    hideCards(grid.getItems());
+    showCards(products);
+});
+
+sortTypeSelectElement.addEventListener("change", async (e) => {
+    typeSort = e.target.value;
+    products = await getAllProducts(`{{ csrf_token() }}`, {
+        sortBy,
+        typeSort,
+        selectStyleId
+    });
+
+    hideCards(grid.getItems());
+    showCards(products);
+});
+</script>
 <script src="{{ asset('js/product.js') }}"></script>
 <script src="{{ asset('js/products/createCards.js') }}"></script>
 <script src="{{ asset('js/products/script.js') }}"></script>

@@ -1,4 +1,4 @@
-async function postJSON(route, data, method, _token) {
+async function postJSON(route, data = {}, _token, method = "POST") {
     const response = await fetch(route, {
         method,
         headers: {
