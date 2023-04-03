@@ -82,7 +82,7 @@
 .paintings-container {
 }
 
-.artist-name {
+.painting-artist {
     color: var(--color-dark-brown);
     font-size: 14px;
     font-weight: 500;
