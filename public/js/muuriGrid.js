@@ -5,7 +5,6 @@ let grid = new Muuri(".grid", {
     },
     sortData: {
         price: function (item, element) {
-            console.log(element.getAttribute("data-price"));
             return parseFloat(element.getAttribute("data-price"));
         },
     },

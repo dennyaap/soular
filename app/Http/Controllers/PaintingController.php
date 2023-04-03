@@ -33,12 +33,26 @@ class PaintingController extends Controller
     }
 
     public function getAll(Request $request) {
+        $parameters = $request->data['data'];
+
         $paintings = [];
 
-        if ($request->data['data']['sortBy']) {
-            $paintings = Painting::orderBy($request->data['data']['sortBy'], $request->data['data']['typeSort'])->get();
+        if (!empty($parameters['sortBy'])) {
+            $paintings = Painting::orderBy($parameters['sortBy'], $parameters['typeSort']);
+        }
+        if (!empty($parameters['stylesId'])) {
+            $paintings->whereIn('style_id', $parameters['stylesId']);
+        }
+        if (!empty($parameters['plotsId'])) {
+            $paintings->whereIn('plot_id', $parameters['plotsId']);
+        }
+        if (!empty($parameters['techniquesId'])) {
+            $paintings->whereIn('techniques_id', $parameters['techniquesId']);
+        }
+        if (!empty($parameters['materialsId'])) {
+            $paintings->whereIn('material_id', $parameters['materialsId']);
         }
 
-        return $paintings;
+        return $paintings->get();
     }
 }

@@ -83,7 +83,7 @@
                                 @foreach($styles as $style)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $style->id }}"
-                                        id="{{ $style->name }}" onclick="selectStyle(this)">
+                                        id="{{ $style->name }}" name="style">
                                     <label class="form-check-label" for="{{ $style->name }}">
                                         {{ $style->name }}
                                     </label>
@@ -106,7 +106,7 @@
                                 @foreach($plots as $plot)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $plot->id }}"
-                                        id="{{ $plot->name }}">
+                                        id="{{ $plot->name }}" name="plot">
                                     <label class="form-check-label" for="{{ $plot->name }}">
                                         {{ $plot->name }}
                                     </label>
@@ -129,7 +129,7 @@
                                 @foreach($techniques as $technique)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $technique->id }}"
-                                        id="{{ $technique->name }}">
+                                        id="{{ $technique->name }}" name="technique">
                                     <label class="form-check-label" for="{{ $technique->name }}">
                                         {{ $technique->name }}
                                     </label>
@@ -152,7 +152,7 @@
                                 @foreach($materials as $material)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $material->id }}"
-                                        id="{{ $material->name }}">
+                                        id="{{ $material->name }}" name="material">
                                     <label class="form-check-label" for="{{ $material->name }}">
                                         {{ $material->name }}
                                     </label>
@@ -200,12 +200,17 @@
 @push('script')
 <script src="{{ asset('js/fetch.js') }}"></script>
 <script src="{{ asset('js/product.js') }}"></script>
+<script src="{{ asset('js/products/createCards.js') }}"></script>
+<script src="{{ asset('js/products/filter.js') }}"></script>
 <script>
-//DOM elements
-const sortBySelectElement = document.getElementById("sortBySelect");
-const sortTypeSelectElement = document.getElementById("sortTypeSelect");
-
 let products = [];
+
+let sortBy = "price";
+let typeSort = "asc";
+let stylesId = [];
+let plotsId = [];
+let techniquesId = [];
+let materialsId = [];
 
 function hideCards(cards) {
     grid.hide(cards);
@@ -221,20 +226,15 @@ function showCards(products, sortBy, typeSort) {
 }
 
 
-function sortCards(products) {
-
-}
-
-let sortBy = 'price';
-let typeSort = 'asc';
-let styleId = '';
-
-
 
 (async () => {
     products = await getAllProducts(`{{ csrf_token() }}`, {
         sortBy,
-        typeSort
+        typeSort,
+        stylesId,
+        plotsId,
+        techniquesId,
+        materialsId
     });
 
     showCards(products);
@@ -245,7 +245,10 @@ sortBySelectElement.addEventListener("change", async (e) => {
     products = await getAllProducts(`{{ csrf_token() }}`, {
         sortBy,
         typeSort,
-        selectStyleId
+        stylesId,
+        plotsId,
+        techniquesId,
+        materialsId,
     });
 
     hideCards(grid.getItems());
@@ -257,14 +260,102 @@ sortTypeSelectElement.addEventListener("change", async (e) => {
     products = await getAllProducts(`{{ csrf_token() }}`, {
         sortBy,
         typeSort,
-        selectStyleId
+        stylesId,
+        plotsId,
+        techniquesId,
+        materialsId,
     });
 
     hideCards(grid.getItems());
     showCards(products);
 });
+
+styleCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", async () => {
+        let checkedCheckboxes = document.querySelectorAll(
+            "input[type=checkbox][name=style]:checked"
+        );
+
+        stylesId = [...checkedCheckboxes].map((item) => item.value);
+
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+        });
+
+        hideCards(grid.getItems());
+        showCards(products);
+    });
+});
+
+plotCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", async () => {
+        let checkedCheckboxes = document.querySelectorAll(
+            "input[type=checkbox][name=plot]:checked"
+        );
+
+        plotsId = [...checkedCheckboxes].map((item) => item.value);
+
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+        });
+
+        hideCards(grid.getItems());
+        showCards(products);
+    });
+});
+
+techniqueCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", async () => {
+        let checkedCheckboxes = document.querySelectorAll(
+            "input[type=checkbox][name=technique]:checked"
+        );
+
+        techniquesId = [...checkedCheckboxes].map((item) => item.value);
+
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+        });
+
+        hideCards(grid.getItems());
+        showCards(products);
+    });
+});
+
+materialCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", async () => {
+        let checkedCheckboxes = document.querySelectorAll(
+            "input[type=checkbox][name=material]:checked"
+        );
+
+        materialsId = [...checkedCheckboxes].map((item) => item.value);
+
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+        });
+
+        hideCards(grid.getItems());
+        showCards(products);
+    });
+});
 </script>
-<script src="{{ asset('js/product.js') }}"></script>
-<script src="{{ asset('js/products/createCards.js') }}"></script>
-<script src="{{ asset('js/products/script.js') }}"></script>
 @endpush

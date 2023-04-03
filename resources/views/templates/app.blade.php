@@ -20,13 +20,12 @@
         @include('inc.navbar')
         @yield('content')
         @include('inc.footer')
-        <script src="{{ asset('js/muuri.js') }}"></script>
-
-        <script src="{{ asset('js/web-animations.min.js') }}"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
-
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/navbar.js') }}"></script>
+
+        <script src="{{ asset('js/muuri.js') }}"></script>
+        <script src="{{ asset('js/muuriGrid.js') }}"></script>
+        <script src="{{ asset('js/web-animations.min.js') }}"></script>
         @stack('script')
     </div>
 </body>
