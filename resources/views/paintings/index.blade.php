@@ -33,7 +33,7 @@
                     <div class="header__sort-title">
                         ФИЛЬТРАЦИЯ
                     </div>
-                    <div class="btn__sort-reset gap-2 d-flex align-items-center">
+                    <div class="btn__sort-reset gap-2 d-flex align-items-center" id="btnResetFilters">
                         <p class="btn__sort-reset__title">СБРОСИТЬ ВСЕ</p>
                         <img src="{{ asset('images/cross.svg') }}" alt="reset" class="btn__sort-reset-icon d-block" />
                     </div>
@@ -205,18 +205,11 @@
 <script>
 let products = [];
 
-let sortBy = "price";
-let typeSort = "asc";
-let stylesId = [];
-let plotsId = [];
-let techniquesId = [];
-let materialsId = [];
-
 function hideCards(cards) {
     grid.hide(cards);
 }
 
-function showCards(products, sortBy, typeSort) {
+function showCards(products) {
     createCards(products).then((data) => {
         const newItems = grid.add(data, {
             active: false
@@ -347,15 +340,39 @@ materialCheckboxes.forEach((checkbox) => {
         products = await getAllProducts(`{{ csrf_token() }}`, {
             sortBy,
             typeSort,
-            stylesId,
-            plotsId,
-            techniquesId,
-            materialsId,
         });
 
         hideCards(grid.getItems());
         showCards(products);
     });
 });
+
+async function resetFilters() {
+    sortBy = "price";
+    typeSort = "asc";
+    stylesId = [];
+    plotsId = [];
+    techniquesId = [];
+    materialsId = [];
+
+    products = await getAllProducts(`{{ csrf_token() }}`, {
+        sortBy,
+        typeSort,
+    });
+
+    hideCards(grid.getItems());
+    showCards(products);
+
+    const checkedCheckboxes = document.querySelectorAll(
+        "input[type=checkbox]:checked"
+    );
+
+    sortBySelectElement.value = sortBy;
+    sortTypeSelectElement.value = typeSort;
+
+    checkedCheckboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+    });
+}
 </script>
 @endpush

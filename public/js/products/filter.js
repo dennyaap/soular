@@ -14,3 +14,14 @@ const techniqueCheckboxes = document.querySelectorAll(
 const materialCheckboxes = document.querySelectorAll(
     "input[type=checkbox][name=material]"
 );
+
+const btnResetFiltersElement = document.getElementById("btnResetFilters");
+
+let sortBy = "price";
+let typeSort = "asc";
+let stylesId = [];
+let plotsId = [];
+let techniquesId = [];
+let materialsId = [];
+
+btnResetFiltersElement.addEventListener("click", () => resetFilters());
