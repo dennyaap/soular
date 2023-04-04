@@ -28,7 +28,7 @@ return new class extends Migration
             $table->foreignId("style_id")->constrained("styles")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("material_id")->constrained("materials")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("plot_id")->constrained("plots")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId("techniques_id")->constrained("techniques")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("technique_id")->constrained("techniques")->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

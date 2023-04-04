@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('patronomyc');
+            $table->string('patronymic');
             $table->integer('age');
-            $table->text('about');
+            $table->text('bio');
             $table->date('birthday');
             $table->text('avatar');
             

@@ -8,7 +8,15 @@ async function createCards(products) {
     return await Promise.all(cardElements);
 }
 
-async function createCard({ image, title, width, height, price, artist }) {
+async function createCard({
+    image,
+    title,
+    width,
+    height,
+    price,
+    artist,
+    technique,
+}) {
     let itemElement = document.createElement("div");
     itemElement.classList.add("item", "painting-card");
 
@@ -41,7 +49,7 @@ async function createCard({ image, title, width, height, price, artist }) {
 
     let techniqueElement = document.createElement("div");
     techniqueElement.classList.add("painting-technique");
-    techniqueElement.textContent = "Масло";
+    techniqueElement.textContent = technique.name;
 
     let priceElement = document.createElement("div");
     priceElement.classList.add("painting-price");

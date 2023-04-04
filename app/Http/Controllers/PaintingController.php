@@ -38,7 +38,7 @@ class PaintingController extends Controller
         $paintings = [];
 
         if (!empty($parameters['sortBy'])) {
-            $paintings = Painting::orderBy($parameters['sortBy'], $parameters['typeSort'])->with('artist');
+            $paintings = Painting::orderBy($parameters['sortBy'], $parameters['typeSort'])->with('artist', 'technique');
         }
         if (!empty($parameters['stylesId'])) {
             $paintings->whereIn('style_id', $parameters['stylesId']);
@@ -53,6 +53,6 @@ class PaintingController extends Controller
             $paintings->whereIn('material_id', $parameters['materialsId']);
         }
 
-        return json_decode($paintings->get());
+        return $paintings->get();
     }
 }
