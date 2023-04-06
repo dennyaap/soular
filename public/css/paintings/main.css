@@ -80,6 +80,7 @@
 }
 
 .paintings-container {
+    min-height: 580px;
 }
 
 .painting-artist {

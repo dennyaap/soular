@@ -4,6 +4,8 @@
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('css/paintings/main.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/pagination.css') }}" />
+
 @endpush
 
 @section('content')
@@ -190,86 +192,223 @@
                         @endforeach -->
                     <!-- </div> -->
                 </div>
+                <div class="paintings-pagination d-flex justify-content-center mt-4">
+                    <div class="pagination-container d-flex justify-content-between align-items-center gap-1">
+                        <div class="page-btn page-btn__prev" id="page-btn__prev">
+                            <a class="page-link" href="#"><img src="{{ asset('images/pagination/arrow.svg') }}"
+                                    alt="btn-prev"></a>
+                        </div>
+                        <div class="pagination d-flex align-items-center gap-1" id="pagination">
+
+                        </div>
+                        <div class="page-btn page-btn__next" id="page-btn__next">
+                            <a class="page-link" href="#"><img src="{{ asset('images/pagination/arrow.svg') }}"
+                                    alt="btn-next"></a>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
-</div>
-</div>
-@endsection()
+    @endsection()
 
-@push('script')
-<script src="{{ asset('js/fetch.js') }}"></script>
-<script src="{{ asset('js/product.js') }}"></script>
-<script src="{{ asset('js/products/createCards.js') }}"></script>
-<script src="{{ asset('js/products/filter.js') }}"></script>
-<script>
-let products = [];
+    @push('script')
+    <script src="{{ asset('js/fetch.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+    <script src="{{ asset('js/products/createCards.js') }}"></script>
+    <script src="{{ asset('js/products/filter.js') }}"></script>
+    <script src="{{ asset('js/pagination.js') }}"></script>
 
-function hideCards(cards) {
-    grid.hide(cards);
-}
+    <script>
+    let products = [];
 
-function showCards(products) {
-    createCards(products).then((data) => {
-        const newItems = grid.add(data, {
-            active: false
+    function hideCards(cards) {
+        grid.hide(cards);
+    }
+
+    function showCards(products) {
+        createCards(products).then((data) => {
+            const newItems = grid.add(data, {
+                active: false
+            });
+            grid.show(newItems);
         });
-        grid.show(newItems);
-    });
-}
+    }
+
+
+    (async () => {
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+            currentPage,
+            limit
+        });
+
+        showCards(products);
+        countPages = await calcPages(products.countPaintings, limit);
+        createPagination(currentPage, countPages);
+
+    })();
 
 
 
-(async () => {
-    products = await getAllProducts(`{{ csrf_token() }}`, {
-        sortBy,
-        typeSort,
-        stylesId,
-        plotsId,
-        techniquesId,
-        materialsId
-    });
+    sortBySelectElement.addEventListener("change", async (e) => {
+        sortBy = e.target.value;
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+            currentPage,
+            limit
+        });
 
-    showCards(products);
-})();
-
-sortBySelectElement.addEventListener("change", async (e) => {
-    sortBy = e.target.value;
-    products = await getAllProducts(`{{ csrf_token() }}`, {
-        sortBy,
-        typeSort,
-        stylesId,
-        plotsId,
-        techniquesId,
-        materialsId,
-    });
-
-    hideCards(grid.getItems());
-    showCards(products);
-});
-
-sortTypeSelectElement.addEventListener("change", async (e) => {
-    typeSort = e.target.value;
-    products = await getAllProducts(`{{ csrf_token() }}`, {
-        sortBy,
-        typeSort,
-        stylesId,
-        plotsId,
-        techniquesId,
-        materialsId,
+        hideCards(grid.getItems());
+        showCards(products);
+        countPages = await calcPages(products.countPaintings, limit);
+        createPagination(currentPage, countPages);
     });
 
-    hideCards(grid.getItems());
-    showCards(products);
-});
+    sortTypeSelectElement.addEventListener("change", async (e) => {
+        typeSort = e.target.value;
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+            currentPage,
+            limit
+        });
 
-styleCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", async () => {
-        let checkedCheckboxes = document.querySelectorAll(
-            "input[type=checkbox][name=style]:checked"
-        );
+        hideCards(grid.getItems());
+        showCards(products);
+        countPages = await calcPages(products.countPaintings, limit);
+        createPagination(currentPage, countPages);
+    });
 
-        stylesId = [...checkedCheckboxes].map((item) => item.value);
+    styleCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", async () => {
+            let checkedCheckboxes = document.querySelectorAll(
+                "input[type=checkbox][name=style]:checked"
+            );
+
+            stylesId = [...checkedCheckboxes].map((item) => item.value);
+
+            products = await getAllProducts(`{{ csrf_token() }}`, {
+                sortBy,
+                typeSort,
+                stylesId,
+                plotsId,
+                techniquesId,
+                materialsId,
+                currentPage,
+                limit
+            });
+
+            hideCards(grid.getItems());
+            showCards(products);
+            countPages = await calcPages(products.countPaintings, limit);
+            createPagination(currentPage, countPages);
+        });
+    });
+
+    plotCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", async () => {
+            let checkedCheckboxes = document.querySelectorAll(
+                "input[type=checkbox][name=plot]:checked"
+            );
+
+            plotsId = [...checkedCheckboxes].map((item) => item.value);
+
+            products = await getAllProducts(`{{ csrf_token() }}`, {
+                sortBy,
+                typeSort,
+                stylesId,
+                plotsId,
+                techniquesId,
+                materialsId,
+                currentPage,
+                limit
+            });
+
+            hideCards(grid.getItems());
+            showCards(products);
+            countPages = await calcPages(products.countPaintings, limit);
+            createPagination(currentPage, countPages);
+        });
+    });
+
+    techniqueCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", async () => {
+            let checkedCheckboxes = document.querySelectorAll(
+                "input[type=checkbox][name=technique]:checked"
+            );
+
+            techniquesId = [...checkedCheckboxes].map((item) => item.value);
+
+            products = await getAllProducts(`{{ csrf_token() }}`, {
+                sortBy,
+                typeSort,
+                stylesId,
+                plotsId,
+                techniquesId,
+                materialsId,
+                currentPage,
+                limit
+            });
+
+            hideCards(grid.getItems());
+            showCards(products);
+            countPages = await calcPages(products.countPaintings, limit);
+            createPagination(currentPage, countPages);
+
+        });
+    });
+
+    materialCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", async () => {
+            let checkedCheckboxes = document.querySelectorAll(
+                "input[type=checkbox][name=material]:checked"
+            );
+
+            materialsId = [...checkedCheckboxes].map((item) => item.value);
+
+            products = await getAllProducts(`{{ csrf_token() }}`, {
+                sortBy,
+                typeSort,
+                stylesId,
+                plotsId,
+                techniquesId,
+                materialsId,
+                currentPage,
+                limit
+            });
+
+            hideCards(grid.getItems());
+            showCards(products);
+            countPages = await calcPages(products.countPaintings, limit);
+            createPagination(currentPage, countPages);
+
+        });
+    });
+
+    async function resetFilters() {
+        sortBy = "price";
+        typeSort = "asc";
+        stylesId = [];
+        plotsId = [];
+        techniquesId = [];
+        materialsId = [];
 
         products = await getAllProducts(`{{ csrf_token() }}`, {
             sortBy,
@@ -278,101 +417,48 @@ styleCheckboxes.forEach((checkbox) => {
             plotsId,
             techniquesId,
             materialsId,
+            currentPage,
+            limit
         });
 
         hideCards(grid.getItems());
         showCards(products);
-    });
-});
+        countPages = await calcPages(products.countPaintings, limit);
+        createPagination(currentPage, countPages);
 
-plotCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", async () => {
-        let checkedCheckboxes = document.querySelectorAll(
-            "input[type=checkbox][name=plot]:checked"
+
+        const checkedCheckboxes = document.querySelectorAll(
+            "input[type=checkbox]:checked"
         );
 
-        plotsId = [...checkedCheckboxes].map((item) => item.value);
+        sortBySelectElement.value = sortBy;
+        sortTypeSelectElement.value = typeSort;
 
-        products = await getAllProducts(`{{ csrf_token() }}`, {
-            sortBy,
-            typeSort,
-            stylesId,
-            plotsId,
-            techniquesId,
-            materialsId,
+        checkedCheckboxes.forEach((checkbox) => {
+            checkbox.checked = false;
         });
+    }
 
-        hideCards(grid.getItems());
-        showCards(products);
-    });
-});
+    async function changePage(page) {
+        if (page > 0 && page <= countPages) {
+            currentPage = page;
 
-techniqueCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", async () => {
-        let checkedCheckboxes = document.querySelectorAll(
-            "input[type=checkbox][name=technique]:checked"
-        );
+            products = await getAllProducts(`{{ csrf_token() }}`, {
+                sortBy,
+                typeSort,
+                stylesId,
+                plotsId,
+                techniquesId,
+                materialsId,
+                currentPage,
+                limit
+            });
 
-        techniquesId = [...checkedCheckboxes].map((item) => item.value);
-
-        products = await getAllProducts(`{{ csrf_token() }}`, {
-            sortBy,
-            typeSort,
-            stylesId,
-            plotsId,
-            techniquesId,
-            materialsId,
-        });
-
-        hideCards(grid.getItems());
-        showCards(products);
-    });
-});
-
-materialCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", async () => {
-        let checkedCheckboxes = document.querySelectorAll(
-            "input[type=checkbox][name=material]:checked"
-        );
-
-        materialsId = [...checkedCheckboxes].map((item) => item.value);
-
-        products = await getAllProducts(`{{ csrf_token() }}`, {
-            sortBy,
-            typeSort,
-        });
-
-        hideCards(grid.getItems());
-        showCards(products);
-    });
-});
-
-async function resetFilters() {
-    sortBy = "price";
-    typeSort = "asc";
-    stylesId = [];
-    plotsId = [];
-    techniquesId = [];
-    materialsId = [];
-
-    products = await getAllProducts(`{{ csrf_token() }}`, {
-        sortBy,
-        typeSort,
-    });
-
-    hideCards(grid.getItems());
-    showCards(products);
-
-    const checkedCheckboxes = document.querySelectorAll(
-        "input[type=checkbox]:checked"
-    );
-
-    sortBySelectElement.value = sortBy;
-    sortTypeSelectElement.value = typeSort;
-
-    checkedCheckboxes.forEach((checkbox) => {
-        checkbox.checked = false;
-    });
-}
-</script>
-@endpush
+            showCards(products);
+            hideCards(grid.getItems());
+            countPages = await calcPages(products.countPaintings, limit);
+            createPagination(currentPage, countPages);
+        }
+    }
+    </script>
+    @endpush

@@ -35,11 +35,16 @@ class PaintingController extends Controller
     public function getAll(Request $request) {
         $parameters = $request->data['data'];
 
-        $paintings = [];
+        $sortBy = isset($parameters['sortBy']) ? $parameters['sortBy'] : 'price';
+        $typeSort = isset($parameters['typeSort']) ? $parameters['typeSort'] : 'asc';
 
-        if (!empty($parameters['sortBy'])) {
-            $paintings = Painting::orderBy($parameters['sortBy'], $parameters['typeSort'])->with('artist', 'technique');
-        }
+        $currentPage = isset($parameters['currentPage']) ? $parameters['currentPage'] : 1;
+        $limit = isset($parameters['limit']) ? $parameters['limit'] : 10;
+        $offset = ($currentPage - 1) * $limit;
+
+
+        $paintings = Painting::orderBy($sortBy, $typeSort)->with('artist', 'technique');
+
         if (!empty($parameters['stylesId'])) {
             $paintings->whereIn('style_id', $parameters['stylesId']);
         }
@@ -53,6 +58,10 @@ class PaintingController extends Controller
             $paintings->whereIn('material_id', $parameters['materialsId']);
         }
 
-        return $paintings->get();
+        $countPaintings = $paintings->count();
+
+        $paintings->offset($offset)->limit($limit);
+
+        return array_merge(['paintings' => $paintings->get()], ['countPaintings' => $countPaintings]);
     }
 }
