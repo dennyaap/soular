@@ -9,6 +9,7 @@ async function createCards(products) {
 }
 
 async function createCard({
+    id,
     image,
     title,
     width,
@@ -19,6 +20,10 @@ async function createCard({
 }) {
     let itemElement = document.createElement("div");
     itemElement.classList.add("item", "painting-card");
+
+    itemElement.addEventListener("click", (e) => {
+        window.location.href = `http://127.0.0.1:8000/painting/?id=${id}`;
+    });
 
     let itemContentElement = document.createElement("div");
     itemContentElement.classList.add(

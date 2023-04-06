@@ -18,5 +18,5 @@ Route::controller(PaintingController::class)->group(function() {
     Route::get('/paintings', 'paintings')->name('paintings.index');
     Route::post('/paintings/getAll', 'getAll')->name('paintings.getAll');
     
-    Route::get('/paintings/{paintingId}', 'painting')->name('painting');
+    Route::get('/painting/', 'painting')->name('painting.index');
 });

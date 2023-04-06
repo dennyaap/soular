@@ -64,4 +64,12 @@ class PaintingController extends Controller
 
         return array_merge(['paintings' => $paintings->get()], ['countPaintings' => $countPaintings]);
     }
+
+    public function painting(Request $request) {
+        $paintingId = $_GET['id'];
+    
+        $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
+        
+        return view('painting.index', compact('painting'));
+    }
 }
