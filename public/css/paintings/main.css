@@ -64,48 +64,6 @@
     height: 100%;
 }
 
-.painting-img {
-}
-
-.painting-card {
-    /* width: calc(25% - 10px); */
-}
-
-.painting-text {
-    width: 100px;
-}
-
-.paintings {
-    margin-top: 30px;
-}
-
-.paintings-container {
-    min-height: 580px;
-}
-
-.painting-artist {
-    color: var(--color-dark-brown);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.painting-title {
-    font-weight: 400;
-    font-size: 18px;
-}
-
-.painting-description {
-    color: var(--color-dark-brown);
-    font-weight: 100;
-    font-size: 14px;
-}
-
-.painting-price {
-    color: var(--color-dark-brown);
-    font-size: 14px;
-    font-weight: 500;
-}
-
 /* .grid {
     position: relative;
     opacity: 0;
@@ -160,45 +118,6 @@
     background: url("../../images/paintings/arrow-down.svg") no-repeat;
     -webkit-appearance: none;
     background-position: calc(100% - 0.75rem) center !important;
-}
-
-.grid {
-    position: relative;
-    width: 100%;
-}
-
-.item {
-    position: absolute;
-    display: block;
-    margin: 15px;
-
-    width: calc(33.3333% - 30px);
-}
-
-.item-content {
-    position: relative;
-}
-
-.painting-img {
-    width: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-    .item {
-        width: calc(50% - 30px);
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .item {
-        width: calc(100% - 30px);
-    }
-}
-
-@keyframes pulse-animation {
-    100% {
-        transform: scale(1.2);
-    }
 }
 
 .filter-container .form-check {

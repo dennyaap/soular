@@ -4,6 +4,7 @@
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('css/paintings/main.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/paintings/card.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/pagination.css') }}" />
 
 @endpush

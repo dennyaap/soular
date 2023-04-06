@@ -69,7 +69,8 @@ class PaintingController extends Controller
         $paintingId = $_GET['id'];
     
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
+        $otherPaintings = Painting::where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
-        return view('painting.index', compact('painting'));
+        return view('painting.index', compact('painting', 'otherPaintings'));
     }
 }

@@ -17,6 +17,23 @@
 }
 
 @font-face {
+    font-family: "Arsenica";
+    src: url("../fonts/Arsenica/ArsenicaTrial-Thin.ttf") format("opentype");
+
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Arsenica";
+    src: url("../fonts/Arsenica/ArsenicaTrial-ThinItalic.ttf")
+        format("opentype");
+
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
     font-family: "Roboto";
     src: url("../fonts/Roboto/Roboto-Regular.ttf") format("opentype");
 
