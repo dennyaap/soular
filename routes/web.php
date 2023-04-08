@@ -24,8 +24,8 @@ Route::controller(PaintingController::class)->group(function() {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/register', 'create')->name('users.create');
-    Route::post('/register', 'store')->name('users.store');
+    Route::get('/registration', 'create')->name('users.create');
+    Route::post('/registration', 'store')->name('users.store');
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'loginCheck')->name('login.check');
 

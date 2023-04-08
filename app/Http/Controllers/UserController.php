@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,10 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
-    // public function index() {
-    //     return view('users.index', ['users' => User::all()]);
-    // }
-
     public function index() {
         $users = User::get();
         return view('users.index', compact('users'));
@@ -56,14 +54,12 @@ class UserController extends Controller
         return view('users.login');
     }
 
-    // public function loginCheck(LoginRequest $request) {
-    //     if (Auth::attempt($request->only(['login', 'password']))) {
-    //         $request->session()->regenerate();
+    public function loginCheck(LoginRequest $request) {
+        if (Auth::attempt($request->only(['email', 'password']))) {
+            $request->session()->regenerate();
 
-    //         return to_route('users.profile');
-    //     }
-    //     return back()->withErrors(['errorLogin' => 'Пользователь не найден']);
-    // }
-
-
+            return to_route('users.profile');
+        }
+        return back()->withErrors(['errorLogin' => 'Неверный логин или пароль']);
+    }
 }
