@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return to_route('users.profile');
+        return to_route('index');
     }
 
     public function logout(Request $request)
@@ -39,15 +40,16 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         
-        return to_route('products');
+        return to_route('index');
     }
     
     public function create() {
         return view('users.create');
     }
 
-    public function show() {
-        return view('users.profile');
+    public function orders() {
+        $orders = Order::where('user_id', auth()->id())->get();
+        return view('users.orders.index', compact('orders'));
     }
 
     public function login() {
@@ -58,7 +60,7 @@ class UserController extends Controller
         if (Auth::attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
 
-            return to_route('users.profile');
+            return to_route('user.orders.index');
         }
         return back()->withErrors(['errorLogin' => 'Неверный логин или пароль']);
     }

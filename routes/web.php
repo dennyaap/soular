@@ -23,12 +23,23 @@ Route::controller(PaintingController::class)->group(function() {
     Route::get('/painting/', 'painting')->name('painting.index');
 });
 
-Route::controller(UserController::class)->group(function () {
-    Route::get('/registration', 'create')->name('users.create');
-    Route::post('/registration', 'store')->name('users.store');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/login', 'loginCheck')->name('login.check');
+Route::middleware('guest')->group(function() {
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/registration', 'create')->name('users.create');
+        Route::post('/registration', 'store')->name('users.store');
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'loginCheck')->name('login.check');
+    });
+});
 
-    Route::get('/profile', 'show')->name('users.profile');
-    Route::get('/logout', 'logout')->name('logout');
+Route::middleware('auth')->group(function() {
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/logout', 'logout')->name('logout');
+    });
+    
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::controller(UserController::class)->group(function() {
+            Route::get('/orders', 'orders')->name('orders.index');
+        });
+    });
 });
