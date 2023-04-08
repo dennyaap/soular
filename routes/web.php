@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PaintingController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +21,14 @@ Route::controller(PaintingController::class)->group(function() {
     Route::post('/paintings/getAll', 'getAll')->name('paintings.getAll');
     
     Route::get('/painting/', 'painting')->name('painting.index');
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/register', 'create')->name('users.create');
+    Route::post('/register', 'store')->name('users.store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'loginCheck')->name('login.check');
+
+    Route::get('/profile', 'show')->name('users.profile');
+    Route::get('/logout', 'logout')->name('logout');
 });

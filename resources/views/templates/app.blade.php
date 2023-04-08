@@ -8,6 +8,8 @@
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <script defer src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar/navbar.css') }}" />
@@ -20,7 +22,6 @@
         @include('inc.navbar')
         @yield('content')
         @include('inc.footer')
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('js/navbar.js') }}"></script>
 
         <script src="{{ asset('js/muuri.js') }}"></script>

@@ -42,3 +42,7 @@
 .item {
     width: calc(25% - 30px);
 }
+
+.description {
+    color: var(--color-dark-brown);
+}

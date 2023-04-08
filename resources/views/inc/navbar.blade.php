@@ -3,20 +3,22 @@
         <div class="navbar__logo">
             Soul Ar
         </div>
-        <ul class="navbar__links">
-            <li class="navbar__link">
-                ГАЛЕРЕЯ
-            </li>
-            <li class="navbar__link">
-                НАШИ ХУДОЖНИКИ
-            </li>
-            <li class="navbar__link">
-                О НАС
-            </li>
-            <li class="navbar__link">
-                КОНТАКТЫ
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarTogglerDemo02">
+            <ul class="navbar-nav navbar__links">
+                <li class="navbar__link">
+                    ГАЛЕРЕЯ
+                </li>
+                <li class="navbar__link">
+                    НАШИ ХУДОЖНИКИ
+                </li>
+                <li class="navbar__link">
+                    О НАС
+                </li>
+                <li class="navbar__link">
+                    КОНТАКТЫ
+                </li>
+            </ul>
+        </div>
         <div class="navbar__buttons">
             <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg"
                 class="navbar__img">
@@ -34,7 +36,6 @@
                     d="M1 24.4078V21.5943C1 18.3091 3.82373 15.6641 7.29083 15.6641H16.7092C20.1941 15.6641 23 18.326 23 21.5943V24.4078"
                     stroke="#453326" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-
         </div>
     </div>
 </nav>

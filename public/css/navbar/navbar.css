@@ -47,8 +47,6 @@
 }
 
 .navbar.navbar-colored {
-    /* background: rgba(255, 255, 255, 0.2); */
-
     color: #fff;
     background: linear-gradient(
         to right,
@@ -56,7 +54,7 @@
         rgba(110, 154, 183, 1) 20%,
         rgba(179, 143, 103, 1) 60%
     );
-    /* backdrop-filter: blur(12px); */
+
     border: none;
 }
 
