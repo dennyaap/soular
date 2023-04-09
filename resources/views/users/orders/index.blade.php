@@ -25,8 +25,7 @@
                     <td>{{ $order->total_price }} р.</td>
                     <td>{{ $order->dateClassic }} </td>
                     <td>
-                        <form method="POST" enctype="multipart/form-data"
-                            action="{{ route('admin.orders.updateStatus', $order->id) }}">
+                        <form method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
 
@@ -43,12 +42,12 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{ route('orders.show', $order->id) }}"
+                        <a href="{{ route('user.orders.show', $order->id) }}"
                             class="btn btn-primary p2 flex-fill">Подробнее</a>
                     </td>
                     <td>
                         @if ($order->status_id != 3)
-                        <a href="{{ route('orders.cancel', $order->id) }}"
+                        <a href="{{ route('user.orders.cancel', $order->id) }}"
                             class="btn btn-danger p2 flex-fill">Отменить</a>
                         @endif
                     </td>

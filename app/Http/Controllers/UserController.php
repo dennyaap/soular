@@ -47,11 +47,6 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function orders() {
-        $orders = Order::where('user_id', auth()->id())->get();
-        return view('users.orders.index', compact('orders'));
-    }
-
     public function login() {
         return view('users.login');
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaintingController;
 use App\Http\Controllers\UserController;
 
@@ -38,8 +39,11 @@ Route::middleware('auth')->group(function() {
     });
     
     Route::prefix('user')->name('user.')->group(function () {
-        Route::controller(UserController::class)->group(function() {
+        Route::controller(OrderController::class)->group(function() {
             Route::get('/orders', 'orders')->name('orders.index');
+            Route::post('/orders', 'orders')->name('orders.index');
+            Route::get('/orders/content/{order}', 'show')->name('orders.show');
+            Route::get('/orders/cancel/{order}', 'cancel')->name('orders.cancel');
         });
     });
 });
