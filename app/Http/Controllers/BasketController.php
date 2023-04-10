@@ -39,20 +39,10 @@ class BasketController extends Controller
         return $isBasket;
     }
 
-    public function decrease(Request $request) {
-        $basketPainting = Basket::getPaintingById($request->data);
-
-        if($basketPainting->count > 1) {
-            $basketPainting->count--;
-            $basketPainting->save();
-        }
-
-        return new BasketResource($basketPainting);
-    }
 
     public function destroy(Request $request) {
-        $basketPainting = Basket::getPaintingById($request->data);
-
+        $basketPainting = Basket::getPaintingById($request->data['paintingId']);
+        
         if($basketPainting->delete()) {
             return new BasketResource($basketPainting);
         }
@@ -80,7 +70,7 @@ class BasketController extends Controller
         $order = Order::create([
             'user_id' => $user_id, //auth()->user()->id
             'status_id' => 1,
-            'total_price' => $request->data
+            'total_price' => $request->data['totalPrice']
         ]);
 
         $this->destroyAllPaintings($user_id);
@@ -99,7 +89,7 @@ class BasketController extends Controller
 
     public function checkPassword(Request $request) {
         $id = auth()->id();
-        $password = $request->data;
+        $password = $request->data['password'];
 
         if(Auth::attempt(compact('id', 'password'))) {
             return 'true';

@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function() {
 
     Route::controller(BasketController::class)->group(function() {
         Route::get('/basket', 'index')->name('basket.index');
-        Route::get('/basket/getProducts', 'getUserProducts')->name('basket.paintings');
+        Route::get('/basket/getPaintings', 'getUserPaintings')->name('basket.paintings');
         Route::post('/basket/add/', 'add')->name('basket.add');
         Route::post('/basket/destroy', 'destroy')->name('basket.destroy');
 

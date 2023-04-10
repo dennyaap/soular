@@ -18,11 +18,15 @@ class BasketResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'title' => $this->product->title,
-            'price' => $this->product->price,
+            'title' => $this->painting->title,
+            'price' => $this->painting->price,
             'user' => $this->user_id,
-            'image' => $this->product->image,
-            'painting_id' => $this->product->id,
+            'image' => $this->painting->image,
+            'painting_id' => $this->painting->id,
+            'artist_name' => $this->painting->artist->name,
+            'artist_surname' => $this->painting->artist->surname,
+            'artist_patronymic' => $this->painting->artist->patronymic,
+
         ];
     }
 }

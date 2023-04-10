@@ -30,7 +30,7 @@ class Basket extends Model
         return self::getBasket()->where('painting_id', $id)->first();
     }
 
-    public static function getUserBasketProducts() {
+    public static function getUserBasketPaintings() {
         return self::getBasket()->get();
     }
 

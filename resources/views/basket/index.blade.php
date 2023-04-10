@@ -6,10 +6,8 @@
 
 @section('script')
 <style>
-@media (min-width: 1025px) {
-    .h-custom {
-        height: 100vh !important;
-    }
+body {
+    background-color: #F5F5F5;
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -43,9 +41,9 @@
 </style>
 @endsection
 
-<section class="h-100 h-custom" style="background-color: #F5F5F5;">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+<section class="py-5">
+    <div class="container py-5 mt-5">
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12">
                 <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                     <div class="card-body p-0">
@@ -83,16 +81,6 @@
                                         <h5 id="totalPrice">0</h5>
                                     </div>
 
-                                    <div class="alert alert-success align-items-center" role="alert" id="successAlert">
-                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                                            aria-label="Success:">
-                                            <use xlink:href="#check-circle-fill" />
-                                        </svg>
-                                        <div>
-                                            Заказ успешно оформлен
-                                        </div>
-                                    </div>
-
                                     <button type="button" class="btn btn-dark btn-block btn-lg"
                                         data-mdb-ripple-color="dark" data-bs-toggle="modal"
                                         data-bs-target="#modalCheckout">Оформить</button>
@@ -110,15 +98,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Подтверждение пароля</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Подтверждение заказа</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <input type="text" placeholder="Введите пароль..." class="form-control" id="userPassword" />
-                <div class="alert alert-danger mt-3" role="alert" id="dangerAlert">
-                    Неверный пароль
-                </div>
-            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="checkout()">Подтвердить</button>
@@ -131,20 +114,19 @@
 
 @push('script')
 <script src="{{ asset('/js/script.js') }}"></script>
+<script src="{{ asset('/js/fetch.js') }}"></script>
+
 <script>
 //элементы DOM
 let cardsContainerElement = document.getElementById('cardsContainer');
 
 const totalPriceElement = document.getElementById('totalPrice');
 const countProductElement = document.getElementById('countProduct');
-const successAlertElement = document.getElementById('successAlert');
 const userPasswordElement = document.getElementById('userPassword');
-const dangerAlertElement = document.getElementById('dangerAlert');
 const modalCheckoutElement = document.getElementById('modalCheckout');
 
 
-successAlertElement.style.display = 'none';
-dangerAlertElement.style.display = 'none';
+
 
 
 let cartProducts = []; //продукты
@@ -166,35 +148,28 @@ const createCards = (products) => {
 
 //создание карточки товара
 const createCard = ({
-    product_id,
+    painting_id,
     title,
     price,
     image,
-    categoryName,
-    count,
-    summary
+    artist_name,
+    artist_surname,
 }) => {
     return `
                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
                         <img
-                            src="{{ url('/storage/products/' . '${image}') }}"
-                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                            src="{{ asset('/images/paintings/'. '${image}') }}"
+                            class="img-fluid" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                        <h6 class="text-muted">${categoryName}</h6>
+                        <h6 class="text-muted">${artist_name} ${artist_surname}</h6>
                         <h6 class="text-black mb-0">${title}</h6>
                         </div>
-                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-
-                        <input id="form1" min="0" name="quantity" value="${count}" type="number"
-                            class="form-control form-control-sm" />
-
-                        </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h6 class="mb-0 productPrice" data-price="${price}">${summary} р.</h6>
+                        <h6 class="mb-0 productPrice" data-price="${price}">${price} р.</h6>
                         </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end" onclick="destroyProduct(${product_id})">
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end" onclick="destroyProduct(${painting_id})">
                         <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
                         </div>
                     </div>
@@ -205,7 +180,7 @@ const createCard = ({
 
 //итоговая стоимость
 const calcPriceProducts = (products) => {
-    return products.reduce((price, product) => price + product.summary, 0);
+    return products.reduce((price, product) => price + product.price, 0);
 }
 
 //получаем все продукты
@@ -216,29 +191,27 @@ const getCartProducts = async () => {
 
 const changeProduct = (products, newProduct) => {
     return cartProducts.map((product) => {
-        if (product.product_id === newProduct.product_id) {
+        if (product.id === newProduct.id) {
             return newProduct;
         }
         return product;
     });
 }
 
-async function destroyProduct(productId) {
-    const cartProduct = (await postJSON(`{{ route('basket.destroy') }}`, productId, "POST", `{{ csrf_token() }}`))
+async function destroyProduct(paintingId) {
+    const cartProduct = (await postJSON(`{{ route('basket.destroy') }}`, {
+            paintingId
+        }, `{{ csrf_token() }}`, 'POST'))
         .data;
 
-    createCards(cartProducts.filter((product) => product.product_id !== cartProduct.product_id));
+    createCards(cartProducts.filter((product) => product.painting_id !== cartProduct.painting_id));
 }
 
 //функции добавления и уменьшения товара
-async function addProduct(productId) {
-    const cartProduct = (await postJSON(`{{ route('basket.add') }}`, productId, "POST", `{{ csrf_token() }}`)).data;
-
-    createCards(changeProduct(cartProducts, cartProduct));
-}
-
-async function decreaseProduct(productId) {
-    const cartProduct = (await postJSON(`{{ route('basket.decrease') }}`, productId, "PATCH", `{{ csrf_token() }}`))
+async function addProduct(paintingId) {
+    const cartProduct = (await postJSON(`{{ route('basket.add') }}`, {
+            paintingId
+        }, `{{ csrf_token() }}`, 'POST'))
         .data;
 
     createCards(changeProduct(cartProducts, cartProduct));
@@ -259,19 +232,12 @@ async function decreaseProduct(productId) {
 async function checkout() {
     const totalPrice = calcPriceProducts(cartProducts);
 
-
-
-    if (await postJSON(`{{ route('basket.checkPassword') }}`, userPassword.value, "POST", `{{ csrf_token() }}`)) {
-        modalCheckoutElement.classList.remove('show');
-        document.querySelector('.modal-backdrop').classList.remove('show');
-
-        if (await postJSON(`{{ route('basket.checkout') }}`, totalPrice, "POST", `{{ csrf_token() }}`)) {
-            successAlert.style.display = 'flex';
-            cardsContainerElement.innerHTML = 'Корзина пуста';
-        };
-
-    } else {
-        dangerAlertElement.style.display = 'block';
+    if (cartProducts.length != 0) {
+        if (await postJSON(`{{ route('basket.checkout') }}`, {
+                totalPrice
+            }, `{{ csrf_token() }}`, 'POST')) {
+            location.href = `{{ route('user.orders.index') }}`
+        }
     }
 }
 </script>
