@@ -22,7 +22,9 @@
                 </p>
             </div>
             <div class="about__footer">
-                <button class="btn-more">УЗНАТЬ БОЛЬШЕ О НАС</button>
+                <a href="{{ route('about.index') }}">
+                    <button class="btn-more">УЗНАТЬ БОЛЬШЕ О НАС</button>
+                </a>
             </div>
         </div>
     </div>

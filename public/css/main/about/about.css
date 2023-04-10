@@ -69,14 +69,16 @@
 #about__picture-1 {
     left: -95%;
 
-    background: url("../../../images/main/about/image1.png");
+    background: url("../../../images/main/about/image1.jpg");
+    background-position-x: right;
+    background-position-y: top;
 }
 
 #about__picture-2 {
     top: 25%;
     right: -95%;
 
-    background: url("../../../images/main/about/image2.png");
+    background: url("../../../images/main/about/image2.jpg");
 }
 
 #about__picture-2::before {
