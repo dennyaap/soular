@@ -1,12 +1,12 @@
 <nav class="container-fluid navbar fixed-top navbar-expand-lg" id="navbar">
     <div class="container navbar__container navbar__content">
         <div class="navbar__logo">
-            Soul Ar
+            <a href="{{ route('index') }}">Soul Ar</a>
         </div>
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav navbar__links">
                 <li class="navbar__link">
-                    ГАЛЕРЕЯ
+                    <a href="{{ route('paintings.index') }}">ГАЛЕРЕЯ</a>
                 </li>
                 <li class="navbar__link">
                     НАШИ ХУДОЖНИКИ

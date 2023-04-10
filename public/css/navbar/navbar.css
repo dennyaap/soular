@@ -9,6 +9,10 @@
     color: var(--color-dark-brown);
 }
 
+.navbar a {
+    color: var(--color-dark-brown);
+}
+
 .navbar__link {
     font-size: 14px;
     font-weight: 400;
