@@ -51,7 +51,6 @@
 }
 
 .navbar.navbar-colored {
-    color: #fff;
     background: linear-gradient(
         to right,
         rgba(110, 154, 183, 1) 0%,
@@ -60,6 +59,10 @@
     );
 
     border: none;
+}
+
+.navbar.navbar-colored a {
+    color: #fff;
 }
 
 .navbar.navbar-colored .navbar__link {

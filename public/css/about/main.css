@@ -1,0 +1,11 @@
+#about__picture-1 {
+    background: url("../../../images/about/painting1.jpg");
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
+}
+
+#about__picture-2 {
+    background: url("../../../images/about/painting2.jpg");
+    background-repeat: no-repeat;
+}

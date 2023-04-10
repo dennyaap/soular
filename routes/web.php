@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/about', function () {
+    return view('about.index');
+})->name('about.index');
+
+
 Route::controller(PaintingController::class)->group(function() {
     Route::get('/', 'index')->name('index');
     Route::get('/paintings', 'paintings')->name('paintings.index');
