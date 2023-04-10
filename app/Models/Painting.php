@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Painting extends Model
 {
@@ -41,5 +43,16 @@ class Painting extends Model
     }
     public function artist() {
         return $this->belongsTo(Artist::class);
+    }
+
+    public function orderContent() {
+        return $this->hasMany(OrderContent::class);
+    }
+
+    protected function dateClassic(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->created_at->format('d.m.Y'),
+        );
     }
 }

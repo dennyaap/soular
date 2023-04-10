@@ -40,3 +40,7 @@
 .navbar-toggler i {
     color: #fff;
 }
+
+.image-content {
+    max-height: 140px;
+}

@@ -14,7 +14,6 @@
                     <th>Дата</th>
                     <th>Статус</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,12 +43,6 @@
                     <td>
                         <a href="{{ route('user.orders.show', $order->id) }}"
                             class="btn btn-primary p2 flex-fill">Подробнее</a>
-                    </td>
-                    <td>
-                        @if ($order->status_id != 3)
-                        <a href="{{ route('user.orders.cancel', $order->id) }}"
-                            class="btn btn-danger p2 flex-fill">Отменить</a>
-                        @endif
                     </td>
                 </tr>
                 @endforeach

@@ -23,33 +23,19 @@
                     <th></th>
                     <th>Название</th>
                     <th>Категория</th>
-                    <th class="text-center">Дата</th>
-                    <th class="text-center">Количество</th>
-                    <th>Общая стоимость</th>
-                    <!-- <th></th> -->
+                    <th>Цена</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse((old('orderContents') ?? $orderContents) as $orderContent)
                 <tr class="align-middle">
                     <td>
-                        <img src="{{ url('/storage/products/' . $orderContent->product->image) }}"
-                            class="card-img card-img-top"
-                            alt="{{ url('/storage/public/products/' . $orderContent->product->image) }}">
+                        <img src="{{ asset('images/paintings/' . $orderContent->painting->image) }}"
+                            class="image-content" alt="{{ $orderContent->painting->title }}">
                     </td>
-                    <td>{{ $orderContent->product->title }}</td>
-                    <td>{{ $orderContent->product->category->name }}</td>
-                    <td class="text-center">{{ $orderContent->product->dateClassic }}</td>
-                    <td class="text-center">{{ $orderContent->count }}</td>
-                    <td>{{ $orderContent->product->price * $orderContent->count}} р.</td>
-
-                    <!-- <td>
-              <form method="POST" action="{{ route('admin.products.destroy', $orderContent->order_id) }}">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-danger p2 w-100">Удалить</button>
-                        </form>
-            </td>    -->
+                    <td>{{ $orderContent->painting->title }}</td>
+                    <td>{{ $orderContent->painting->style->name }}</td>
+                    <td>{{ $orderContent->painting->price }} р.</td>
                 </tr>
                 @empty
                 <p>Товары данной категории отсутствуют</p>
@@ -57,7 +43,7 @@
             </tbody>
         </table>
         <div class="pt-5">
-            <h6 class="mb-0"><a href="{{ route('admin.orders.index') }}" class="text-body"><i
+            <h6 class="mb-0"><a href="{{ route('user.orders.index') }}" class="text-body"><i
                         class="fas fa-long-arrow-alt-left me-2"></i>Вернуться к заказам</a></h6>
         </div>
     </div>

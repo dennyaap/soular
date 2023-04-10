@@ -19,21 +19,13 @@ class OrderController extends Controller
 
     public function show(Order $order) {
         $order_id = $order->id;
-        $orderContents = OrderContent::all()->where('order_id', $order_id);
+        $orderContents = OrderContent::where('order_id', $order_id)->get();
 
         return view('users.orders.content', compact('orderContents', 'order_id'));
     }
 
     public function cancel(Order $order) {
         if($order->update(['status_id' => 3])) {
-            $orderProducts = OrderContent::where('order_id', $order->id)->get();
-
-            foreach($orderProducts as $orderProduct) {
-                $product = Painting::where('id', $orderProduct->painting_id)->first();
-
-                $product->delete();
-            }
-
             return back()->with(['message'=>'Заказ успешно отменен', 'category' => 'success']);
         }
 
