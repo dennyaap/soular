@@ -171,27 +171,6 @@
                     <div class="grid">
 
                     </div>
-                    <!-- <div class="grid"> -->
-                    <!-- @foreach($paintings as $painting)
-                        <div class="grid-item painting-card" data-size="{{ $painting->width + $painting->height }}"
-                            data-price="{{ $painting->price }}">
-                            <div class="item-content d-flex flex-column gap-1">
-                                <img src="{{ asset('images/paintings/'. $painting->image) }}"
-                                    alt="{{ $painting->title }}" class="painting-img mb-2">
-                                <div class="artist-name">{{ $painting->artist->name }} {{ $painting->artist->surname }}
-                                </div>
-                                <div class="painting-title">{{ $painting->title }}</div>
-                                <div class="painting-description">
-                                    <div class="painting-size">{{ $painting->width }}' ш X {{ $painting->height }}'в
-                                    </div>
-                                    <div class="painting-technique">Масло</div>
-                                </div>
-
-                                <div class="painting-price">{{ $painting->price }} Р</div>
-                            </div>
-                        </div>
-                        @endforeach -->
-                    <!-- </div> -->
                 </div>
                 <div class="paintings-pagination d-flex justify-content-center mt-4">
                     <div class="pagination-container d-flex justify-content-between align-items-center gap-1">

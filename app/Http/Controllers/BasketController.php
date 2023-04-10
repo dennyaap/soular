@@ -73,6 +73,15 @@ class BasketController extends Controller
             'total_price' => $request->data['totalPrice']
         ]);
 
+        $basketProducts = Basket::getBasket()->get();
+
+        foreach ($basketProducts as $basketProduct) {
+            OrderContent::create([
+                'painting_id' => $basketProduct->painting_id,
+                'order_id' => $order->id,
+            ]);
+        }
+
         $this->destroyAllPaintings($user_id);
                 
         return $order;

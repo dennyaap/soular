@@ -76,14 +76,14 @@ body {
                                     <hr class="my-4">
 
                                     <div class="d-flex justify-content-between mb-5">
-                                        <h5 class="text-uppercase">Итого</h5>
+                                        <h5 class="text-uppercase">Стоимость</h5>
                                         <h5 id="countProduct"></h5>
                                         <h5 id="totalPrice">0</h5>
                                     </div>
 
                                     <button type="button" class="btn btn-dark btn-block btn-lg"
                                         data-mdb-ripple-color="dark" data-bs-toggle="modal"
-                                        data-bs-target="#modalCheckout">Оформить</button>
+                                        data-bs-target="#modalCheckout" id="btn__show-modal">Оформить</button>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,9 @@ body {
                 <h5 class="modal-title" id="exampleModalLabel">Подтверждение заказа</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
+            <div class="modal-body">
+                <p>Вы действительно хотите совершить заказ?</p>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="checkout()">Подтвердить</button>
@@ -125,7 +127,9 @@ const countProductElement = document.getElementById('countProduct');
 const userPasswordElement = document.getElementById('userPassword');
 const modalCheckoutElement = document.getElementById('modalCheckout');
 
+const btnShowModal = document.getElementById('btn__show-modal');
 
+btnShowModal.style.display = 'none';
 
 
 
@@ -135,7 +139,7 @@ let cartProducts = []; //продукты
 const createCards = (products) => {
     let cardElements = '';
 
-    console.log(products);
+    cardsContainerElement.innerHTML = '';
 
     products.forEach((product) => {
         cardElements += createCard(product);
@@ -204,7 +208,12 @@ async function destroyProduct(paintingId) {
         }, `{{ csrf_token() }}`, 'POST'))
         .data;
 
-    createCards(cartProducts.filter((product) => product.painting_id !== cartProduct.painting_id));
+    cartProducts = cartProducts.filter((product) => product.painting_id !== cartProduct.painting_id)
+    createCards(cartProducts);
+
+    if (!cartProducts.length) {
+        btnShowModal.style.display = 'none';
+    }
 }
 
 //функции добавления и уменьшения товара
@@ -223,7 +232,10 @@ async function addProduct(paintingId) {
 
     let countProducts = 0;
 
-    createCards(cartProducts);
+    if (cartProducts.length) {
+        btnShowModal.style.display = 'block';
+        createCards(cartProducts);
+    }
 
     // countProductElement.textContent = `${countProducts} шт.`;
 })();

@@ -10,6 +10,7 @@ use App\Models\Plot;
 use App\Models\Style;
 use App\Models\Technique;
 use App\Models\Material;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -24,13 +25,15 @@ class PaintingController extends Controller
     }
 
     public function paintings() {
-        $paintings = Painting::all();
+        // $paintings = Painting::all()
+
+
         $plots = Plot::all();
         $styles = Style::all();
         $techniques = Technique::all();
         $materials = Material::all();
 
-        return view('paintings.index', compact('paintings', 'plots', 'styles', 'techniques', 'materials'));
+        return view('paintings.index', compact('plots', 'styles', 'techniques', 'materials'));
     }
 
     public function getAll(Request $request) {
@@ -44,7 +47,7 @@ class PaintingController extends Controller
         $offset = ($currentPage - 1) * $limit;
 
 
-        $paintings = Painting::orderBy($sortBy, $typeSort)->with('artist', 'technique');
+        $paintings = Painting::doesntHave('orderContent')->orderBy($sortBy, $typeSort)->with('artist', 'technique');
 
         if (!empty($parameters['stylesId'])) {
             $paintings->whereIn('style_id', $parameters['stylesId']);
@@ -72,7 +75,7 @@ class PaintingController extends Controller
 
     
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
-        $otherPaintings = Painting::where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
+        $otherPaintings = Painting::doesntHave('orderContent')->where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
         return view('painting.index', compact('painting', 'otherPaintings', 'isBasket'));
     }
