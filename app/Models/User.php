@@ -26,6 +26,10 @@ class User extends Authenticatable
         'address'
     ];
 
+    public function baskets() {
+        return $this->hasMany(Basket::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

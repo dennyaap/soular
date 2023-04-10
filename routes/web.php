@@ -3,6 +3,8 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaintingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BasketController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +47,19 @@ Route::middleware('auth')->group(function() {
             Route::get('/orders/content/{order}', 'show')->name('orders.show');
             Route::get('/orders/cancel/{order}', 'cancel')->name('orders.cancel');
         });
+    });
+
+    Route::controller(BasketController::class)->group(function() {
+        Route::get('/basket', 'index')->name('basket.index');
+        Route::get('/basket/getProducts', 'getUserProducts')->name('basket.paintings');
+        Route::post('/basket/add/', 'add')->name('basket.add');
+        Route::post('/basket/destroy', 'destroy')->name('basket.destroy');
+
+        Route::post('/basket/checkout', 'checkout')->name('basket.checkout');
+
+        Route::patch('/basket/decrease', 'decrease')->name('basket.decrease');
+
+        Route::post('/basket/checkPassword', 'checkPassword')->name('basket.checkPassword');
+
     });
 });

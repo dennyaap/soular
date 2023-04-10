@@ -24,9 +24,18 @@
                     <!-- <span class="text-decoration-line-through">$45.00</span> -->
                     <span class="price">{{ $painting->price }} Р</span>
                 </div>
-                <button class="btn btn__add-basket mt-2" type="button">
+
+                @if($isBasket)
+                <a class="btn btn__add-basket mt-2" href="{{ route('basket.index') }}">
+                    В корзине
+                </a>
+                @else
+                <button class="btn btn__add-basket mt-2" type="button" id="btn__add-basket"
+                    data-id="{{ $painting->id }}">
                     Добавить в корзину
                 </button>
+                @endif
+
                 <p class="lead mt-4 description">Картина выполнена крупными мазками, на поверхности холста видна
                     текстура краски и
                     следы кисти. Он окрашен с использованием комбинации масляной и акриловой красок, что придает ему
@@ -62,3 +71,35 @@
 </section>
 
 @endsection
+
+@push('script')
+<script src="{{ asset('/js/script.js')}}"></script>
+<script src="{{ asset('/js/fetch.js')}}"></script>
+
+<script>
+const btnAddBasket = document.getElementById('btn__add-basket');
+
+btnAddBasket.addEventListener('click', async (e) => {
+    e.preventDefault();
+    await addBasket(e.target.dataset.id).then(() => {
+        btnAddBasket.textContent = 'В корзине';
+
+        btnAddBasket.addEventListener('click', async (e) => {
+            goTo(`{{ route('basket.index') }}`);
+        });
+    });
+});
+
+async function addBasket(paintingId) {
+    return postJSON(`{{ route('basket.add') }}`, {
+            paintingId
+        }, `{{ csrf_token() }}`,
+        'POST');
+}
+
+function goTo(route) {
+    window.location.href = route;
+}
+</script>
+
+@endpush

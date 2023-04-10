@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Basket;
 use Illuminate\Http\Request;
 
 use App\Models\Painting;
@@ -67,10 +68,12 @@ class PaintingController extends Controller
 
     public function painting(Request $request) {
         $paintingId = $_GET['id'];
+        $isBasket = Basket::getPaintingById($paintingId) != null;
+
     
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
         $otherPaintings = Painting::where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
-        return view('painting.index', compact('painting', 'otherPaintings'));
+        return view('painting.index', compact('painting', 'otherPaintings', 'isBasket'));
     }
 }
