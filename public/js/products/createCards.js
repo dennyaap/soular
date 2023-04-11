@@ -21,6 +21,8 @@ async function createCard({
     let itemElement = document.createElement("div");
     itemElement.classList.add("item", "painting-card");
 
+    itemElement.style.cursor = "pointer";
+
     itemElement.addEventListener("click", (e) => {
         window.location.href = `http://127.0.0.1:8000/painting/?id=${id}`;
     });
