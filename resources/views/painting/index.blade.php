@@ -36,11 +36,13 @@
                 </button>
                 @endif
 
-                <p class="lead mt-4 description">Картина выполнена крупными мазками, на поверхности холста видна
-                    текстура краски и
-                    следы кисти. Он окрашен с использованием комбинации масляной и акриловой красок, что придает ему
-                    чрезвычайную яркость и блеск в некоторых областях. В некоторых местах картины масляный пигмент
-                    флуоресцентный, что дает интенсивный насыщенный цвет.</p>
+                <p class="lead mt-4 description">Стиль: {{ $painting->style->name}}</p>
+                <p class="lead mt-4 description">Материал: {{ $painting->material->name}}</p>
+                <p class="lead mt-4 description">Жанр: {{ $painting->plot->name}}</p>
+                <p class="lead mt-4 description">Техника: {{ $painting->technique->name}}</p>
+
+                <p class="lead mt-4 description">{{ $painting->description }}</p>
+
 
             </div>
         </div>

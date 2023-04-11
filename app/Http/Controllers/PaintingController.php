@@ -70,7 +70,7 @@ class PaintingController extends Controller
         $isBasket = Basket::getPaintingById($paintingId) != null;
 
     
-        $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
+        $painting = Painting::where('id', $paintingId)->with('artist', 'technique', 'material', 'plot', 'style')->first();
         $otherPaintings = Painting::doesntHave('orderContent')->where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
         
