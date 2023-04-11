@@ -13,71 +13,30 @@
                     <h1 class="section__description-title">Недавно добавленные</h1>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-4 g-5 arts__container">
+            <div class="row row-cols-1 row-cols-md-4 g-5 arts__container d-flex align-items-end">
+                @foreach($paintings as $key => $painting)
                 <div class="col element-animation">
                     <div class="card border-0">
-                        <img src="{{ asset('../../images/main/arts/image1.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('images/paintings/'. $painting->image) }}" alt="{{ $painting->title }}">
                         <div class="art__card-body">
                             <div class="art__card-container">
-                                <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
-                                <p class="card-title art__card-title">Endless depth of green waves</p>
-                                <div class="art__card-button">
-                                    <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
-                                </div>
+                                <p class="card-title art__card-artist">{{ $painting->artist->name}}</p>
+                                <p class="card-title art__card-title">{{ $painting->title }}</p>
+                                <a class="art__card-button"
+                                    href="{{ route('painting.index') . '?id=' . $painting->id }}">
+                                    <span>{{ $painting->price }} Р</span>
+                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}"
+                                        alt="{{ $painting->title }}">
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col element-animation">
-                    <div class="card border-0 mt-5">
-                        <img src="{{ asset('../../images/main/arts/image2.jpg') }}" class="card-img-top" alt="...">
-                        <div class="art__card-body">
-                            <div class="art__card-container">
-                                <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
-                                <p class="card-title art__card-title">Endless depth of green waves</p>
-                                <div class="art__card-button">
-                                    <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col element-animation">
-                    <div class="card border-0">
-                        <img src="{{ asset('../../images/main/arts/image3.jpg') }}" class="card-img-top" alt="...">
-                        <div class="art__card-body">
-                            <div class="art__card-container">
-                                <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
-                                <p class="card-title art__card-title">Endless depth of green waves</p>
-                                <div class="art__card-button">
-                                    <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col element-animation">
-                    <div class="card border-0 mt-5">
-                        <img src="{{ asset('../../images/main/arts/image4.jpg') }}" class="card-img-top" alt="...">
-                        <div class="art__card-body">
-                            <div class="art__card-container">
-                                <p class="card-title art__card-artist">АННА ПАЮСОВА</p>
-                                <p class="card-title art__card-title">Endless depth of green waves</p>
-                                <div class="art__card-button">
-                                    <span>10,000.00 Р</span>
-                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
     <div class="arts__footer">
-        <button class="btn-more arts__btn-more">ПОКАЗАТЬ БОЛЬШЕ</button>
+        <a class="btn-more arts__btn-more" href="{{ route('paintings.index') }}">ПОКАЗАТЬ БОЛЬШЕ</a>
     </div>
 </section>

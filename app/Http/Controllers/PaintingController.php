@@ -12,13 +12,10 @@ use App\Models\Technique;
 use App\Models\Material;
 use Illuminate\Support\Facades\DB;
 
-
-
-
 class PaintingController extends Controller
 {
     public function index() {
-        $paintings = Painting::all();
+        $paintings = Painting::with('artist')->latest('created_at')->take(4)->get();
         $plots = Plot::all();
 
         return view('main', compact('paintings', 'plots'));
@@ -26,8 +23,7 @@ class PaintingController extends Controller
 
     public function paintings() {
         // $paintings = Painting::all()
-
-
+        
         $plots = Plot::all();
         $styles = Style::all();
         $techniques = Technique::all();
@@ -76,6 +72,7 @@ class PaintingController extends Controller
     
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique')->first();
         $otherPaintings = Painting::doesntHave('orderContent')->where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
+        
         
         return view('painting.index', compact('painting', 'otherPaintings', 'isBasket'));
     }

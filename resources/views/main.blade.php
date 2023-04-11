@@ -24,4 +24,17 @@
 
 @push('script')
 <script src="{{ asset('js/animation.js') }}"></script>
+
+<script>
+const btnExplore = document.getElementById('btn-explore');
+
+btnExplore.addEventListener('click', function(e) {
+    e.preventDefault()
+
+    document.getElementById('about').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
+})
+</script>
 @endpush

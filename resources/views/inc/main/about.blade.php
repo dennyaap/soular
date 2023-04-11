@@ -1,4 +1,4 @@
-<section class="about">
+<section class="about" id="about">
     <div class="about__container">
         <div class="about__content">
             <div class="about__picture element-animation" id="about__picture-1"></div>

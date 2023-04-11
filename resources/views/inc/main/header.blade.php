@@ -4,7 +4,7 @@
             <p class="header__description">ОНЛАЙН МАГАЗИН КАРТИН</p>
             <h1 class="header__title">Мы часть искусства</h1>
             <div class="header__footer">
-                <div class="btn-explore">
+                <div class="btn-explore" id="btn-explore">
                     <img src="{{ asset('images/main/button/arrow.svg') }}" alt="arrow" />
                     <div class="circular">
                         <svg viewBox="0 0 100 100">
