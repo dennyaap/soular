@@ -98,7 +98,7 @@
 
                 <div class="list-group list-group-flush mx-3 mt-4">
                     <a class="list-group-item list-group-item-action py-2 ripple btn-logout d-flex align-items-center gap-3"
-                        href="{{ route('logout') }}">
+                        href="{{ route('user.logout') }}">
                         <i class="fas fa-sharp fa-light fa-arrow-right-from-bracket fa-flip-horizontal fa-fw"></i>
                         <span>Выйти</span>
                     </a>

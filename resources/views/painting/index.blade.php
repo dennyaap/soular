@@ -42,8 +42,6 @@
                 <p class="lead mt-4 description">Техника: {{ $painting->technique->name}}</p>
 
                 <p class="lead mt-4 description">{{ $painting->description }}</p>
-
-
             </div>
         </div>
     </div>

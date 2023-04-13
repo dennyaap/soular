@@ -133,9 +133,12 @@
                                     </div>
 
 
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <div
+                                        class="d-flex justify-content-center align-items-center gap-5 mx-4 mb-3 mb-lg-4">
                                         <button type="submit"
                                             class="btn btn-lg btn-register">Зарегистрироваться</button>
+                                        <a href="{{ route('user.login') }}">Войти</a>
+
                                     </div>
 
                                 </form>

@@ -32,20 +32,22 @@ Route::controller(PaintingController::class)->group(function() {
 });
 
 Route::middleware('guest')->group(function() {
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/registration', 'create')->name('users.create');
-        Route::post('/registration', 'store')->name('users.store');
-        Route::get('/login', 'login')->name('login');
-        Route::post('/login', 'loginCheck')->name('login.check');
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::controller(UserController::class)->group(function () {
+            Route::get('/registration', 'create')->name('create');
+            Route::post('/registration', 'store')->name('store');
+            Route::get('/login', 'login')->name('login');
+            Route::post('/login', 'loginCheck')->name('login.check');
+        });
     });
 });
 
-Route::middleware('auth')->group(function() {
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/logout', 'logout')->name('logout');
-    });
-    
+Route::middleware('auth')->group(function() {    
     Route::prefix('user')->name('user.')->group(function () {
+        Route::controller(UserController::class)->group(function () {
+            Route::get('/logout', 'logout')->name('logout');
+        });
+        
         Route::controller(OrderController::class)->group(function() {
             Route::get('/orders', 'orders')->name('orders.index');
             Route::post('/orders', 'orders')->name('orders.index');

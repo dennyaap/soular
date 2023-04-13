@@ -21,7 +21,7 @@
 
                                 <p class="h1 mb-5 mx-1 mx-md-4 mt-4 login-title">Войти</p>
 
-                                <form class="mx-1 mx-md-4" method="POST" action="{{ route('login.check') }}">
+                                <form class="mx-1 mx-md-4" method="POST" action="{{ route('user.login.check') }}">
                                     @CSRF
 
                                     <div class="d-flex flex-row align-items-center mb-4">
@@ -54,8 +54,10 @@
                                     </div>
 
 
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <div
+                                        class="d-flex justify-content-center align-items-center gap-5 mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-lg btn-login">Войти</button>
+                                        <a href="{{ route('user.store') }}">Регистрация</a>
                                     </div>
 
                                 </form>

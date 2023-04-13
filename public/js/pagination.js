@@ -3,7 +3,7 @@ const pageBtnPrev = document.getElementById("page-btn__prev");
 const pageBtnNext = document.getElementById("page-btn__next");
 
 let currentPage = 1;
-let limit = 3;
+let limit = 6;
 
 let countPages = 1;
 
