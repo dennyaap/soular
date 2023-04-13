@@ -66,6 +66,9 @@ class PaintingController extends Controller
     }
 
     public function painting(Request $request) {
+        $paintingId = $_GET['id'];
+        $isBasket = auth()->user() && Basket::getPaintingById($paintingId);
+
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique', 'material', 'plot', 'style')->first();
         $otherPaintings = Painting::doesntHave('orderContent')->where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
