@@ -18,12 +18,15 @@ class PlotSeeder extends Seeder
         DB::table('plots')->insert([
             [
                 'name' => 'Абстракции',
+                'image' => 'image1.jpg'
             ],
             [
                 'name' => 'Иллюстрации',
+                'image' => 'image2.jpg'
             ],
             [
                 'name' => 'Пейзаж',
+                'image'=> 'image3.jpg'
             ],
         ]);
     }

@@ -35,7 +35,7 @@ class PaintingController extends Controller
 
     public function store(PaintingRequest $request)
     {
-        $path = FileService::upload($request->file('image'), '/paintings');
+        $path = FileService::upload($request->file('image'), '/paintings/');
 
         Painting::create(array_merge(
             ['image' => $path],

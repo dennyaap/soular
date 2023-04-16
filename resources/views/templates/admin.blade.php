@@ -84,12 +84,12 @@
                     </a>
                 </div>
                 <div class="list-group list-group-flush mx-3 mt-4 d-flex gap-2">
-                    <a href="{{ route('user.orders.index') }}"
+                    <a href="{{ route('index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
                         <i class="fas fa-regular fa-arrow-right fa-flip-horizontal fa-fw"></i><span>На главную</span>
                     </a>
-                    <a href="{{ route('user.orders.index') }}"
+                    <a href="{{ route('admin.orders.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
                         <i class="fas fa-list fa-fw"></i><span>Заказы</span>
@@ -98,6 +98,11 @@
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
                         <i class="fas fa-list fa-fw"></i><span>Товары</span>
+                    </a>
+                    <a href="{{ route('admin.plots.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-list fa-fw"></i><span>Сюжеты</span>
                     </a>
                 </div>
 

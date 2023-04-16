@@ -4,8 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StyleRequest;
-use App\Models\Plot;
-
+use App\Models\Style;
 use Illuminate\Http\Request;
 
 class StyleController extends Controller
@@ -22,7 +21,7 @@ class StyleController extends Controller
         ]);
     }
 
-    public function store(PlotRequest $request)
+    public function store(StyleRequest $request)
     {
         Style::create($request->only(
             ['name']
@@ -31,8 +30,8 @@ class StyleController extends Controller
         return to_route('admin.styles.index');
     }
 
-    public function destroy(Style $plot) {
-        if($plot->delete()) {
+    public function destroy(Style $style) {
+        if($style->delete()) {
             return back()->with(['message'=>'Товар успешно удален']);
         }
 
@@ -41,7 +40,7 @@ class StyleController extends Controller
 
     public function edit(Style $style) {
         return view('admins.styles.update', [
-            'plot' => $style,
+            'style' => $style,
         ]);
     }
 

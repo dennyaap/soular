@@ -24,7 +24,7 @@ class PlotRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:3', 'unique:plots'],
+            'name' => ['required', 'min:3'],
         ];
     }
 
@@ -32,7 +32,6 @@ class PlotRequest extends FormRequest
         return [
             'required'=> ':attribute обязательно для заполнения',
             'min' => 'Минимальная длина поля :attribute : :min',
-            'unique' => 'Такое название сюжета уже существует'
         ];
     }
 

@@ -13,6 +13,7 @@ class Plot extends Model
     
     protected $fillable = [
         'name',
+        'image'
     ];
 
     public function paintings() {
