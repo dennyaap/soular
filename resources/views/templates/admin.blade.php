@@ -104,6 +104,21 @@
                         aria-current="true">
                         <i class="fas fa-list fa-fw"></i><span>Сюжеты</span>
                     </a>
+                    <a href="{{ route('admin.styles.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-list fa-fw"></i><span>Стили</span>
+                    </a>
+                    <a href="{{ route('admin.techniques.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-list fa-fw"></i><span>Техники</span>
+                    </a>
+                    <a href="{{ route('admin.materials.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-list fa-fw"></i><span>Материалы</span>
+                    </a>
                 </div>
 
                 <div class="list-group list-group-flush mx-3 mt-4">
