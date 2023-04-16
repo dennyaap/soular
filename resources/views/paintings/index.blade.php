@@ -109,7 +109,8 @@
                                 @foreach($plots as $plot)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $plot->id }}"
-                                        id="{{ $plot->name }}" name="plot">
+                                        id="{{ $plot->name }}" name="plot"
+                                        {{ $plot->id == ($_GET['plot_id'] ?? '') ? 'checked' : ''}}>
                                     <label class="form-check-label" for="{{ $plot->name }}">
                                         {{ $plot->name }}
                                     </label>
@@ -219,11 +220,16 @@
 
 
     (async () => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        const plot_id = urlParams.get('plot_id');
+
         products = await getAllProducts(`{{ csrf_token() }}`, {
             sortBy,
             typeSort,
             stylesId,
-            plotsId,
+            plotsId: plot_id ? [plot_id] : [],
             techniquesId,
             materialsId,
             currentPage,

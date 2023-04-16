@@ -21,7 +21,7 @@ class PaintingController extends Controller
         return view('main', compact('paintings', 'plots'));
     }
 
-    public function paintings() {
+    public function paintings(Request $request) {
         // $paintings = Painting::all()
         
         $plots = Plot::all();

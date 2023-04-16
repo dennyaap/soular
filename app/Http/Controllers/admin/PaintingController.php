@@ -20,6 +20,7 @@ class PaintingController extends Controller
     public function index() {
         return view('admins.paintings.index', [
             'paintings' => Painting::all(),
+            'plots' => Plot::take(3)->get()
         ]);
     }
 

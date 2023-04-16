@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/main/main.css') }}">
 <link rel="stylesheet" href="{{ asset('css/main/header/header.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/main/about/about.css') }}" />
-<link rel="stylesheet" href="{{ asset('css/main/styles/styles.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/main/plots/plots.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/main/arts/arts.css') }}" />
 @endpush
 
@@ -16,7 +16,7 @@
 
 <div class="container">
     @include('inc.main.about')
-    @include('inc.main.styles')
+    @include('inc.main.plots')
 </div>
 @include('inc.main.arts')
 
