@@ -52,7 +52,7 @@
             <h2 class="mb-4 paintings-title">Другие работы художника</h2>
             <div class="grid">
                 @foreach($otherPaintings as $painting)
-                <div class="item painting-card">
+                <a class="item painting-card" href="{{ route('painting.index') . '?id=' . $painting->id }}">
                     <div class="item-content d-flex flex-column gap-1"><img class="painting-img mb-2"
                             src="{{ url('storage/paintings/' . $painting->image) }}">
                         <div class="painting-artist">{{ $painting->artist->surname}} {{ $painting->artist->name }}</div>
@@ -63,7 +63,7 @@
                             <div class="painting-price">{{ $painting->price }} Р</div>
                         </div>
                     </div>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
