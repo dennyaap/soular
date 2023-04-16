@@ -68,11 +68,17 @@ class PaintingController extends Controller
     }
 
     public function update(PaintingRequest $request, Painting $painting) {
-        $newPath = FileService::update($painting->image, $request->file('image'), '/paintings/');
-        
-        if($newPath) {
-            if($painting->update(['image' => $newPath] + $request->except(['_token', 'image']))) {
+        if ($request->file('image')) {
+            $newPath = FileService::update($painting->image, $request->file('image'), '/paintings/');
 
+            if ($newPath) {
+                if($painting->update(['image' => $newPath] + $request->except(['_token', 'image']))) {
+
+                    return to_route('admin.paintings.index')->withErrors(['success' => 'Запись успешно обновлена']);
+                }
+            }
+        } else {
+            if($painting->update($request->except(['_token', 'image']))) {
                 return to_route('admin.paintings.index')->withErrors(['success' => 'Запись успешно обновлена']);
             }
         }
