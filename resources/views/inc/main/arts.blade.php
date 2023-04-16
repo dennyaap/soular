@@ -17,7 +17,7 @@
                 @foreach($paintings as $key => $painting)
                 <div class="col element-animation">
                     <div class="card border-0">
-                        <img src="{{ asset('images/paintings/'. $painting->image) }}" alt="{{ $painting->title }}">
+                        <img src="{{ url('storage/paintings/'. $painting->image) }}" alt="{{ $painting->title }}">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">{{ $painting->artist->name}}</p>
@@ -25,8 +25,7 @@
                                 <a class="art__card-button"
                                     href="{{ route('painting.index') . '?id=' . $painting->id }}">
                                     <span>{{ $painting->price }} Р</span>
-                                    <img src="{{ asset('../../images/main/arts/arrow.svg') }}"
-                                        alt="{{ $painting->title }}">
+                                    <img src="{{ asset('/images/main/arts/arrow.svg') }}" alt="{{ $painting->title }}">
                                 </a>
                             </div>
                         </div>

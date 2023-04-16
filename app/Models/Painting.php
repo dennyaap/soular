@@ -21,7 +21,7 @@ class Painting extends Model
         'date_creation',
         'plot_id',
         'style_id',
-        'techniques_id',
+        'technique_id',
         'material_id',
         'artist_id'
     ];

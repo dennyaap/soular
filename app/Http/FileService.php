@@ -28,7 +28,7 @@ class FileService {
 
     public static function update($file, $newFile, $dir) {
         $oldPath = $dir . pathinfo($file, PATHINFO_BASENAME);
-
+        dd($file);
         if ($newFile) {
             self::delete($file, $oldPath);
 

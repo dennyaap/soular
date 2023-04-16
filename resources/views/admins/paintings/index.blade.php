@@ -38,7 +38,7 @@
                 @forelse((old('paintings') ?? $paintings) as $painting)
                 <tr class="align-middle">
                     <td>
-                        <img src="{{ asset('images/paintings/' . $painting->image) }}" class="card-img card-img-top"
+                        <img src="{{ url('storage/paintings/' . $painting->image) }}" class="card-img card-img-top"
                             alt="{{ $painting->title }}">
                     </td>
                     <td>{{ $painting->title }}</td>

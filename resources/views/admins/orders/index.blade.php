@@ -14,7 +14,6 @@
                     <th>Дата</th>
                     <th>Статус</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +42,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{ route('user.orders.show', $order->id) }}"
+                        <a href="{{ route('admin.orders.show', $order->id) }}"
                             class="btn btn-primary p2 flex-fill">Подробнее</a>
                     </td>
                 </tr>

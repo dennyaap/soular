@@ -116,6 +116,20 @@
             </div>
 
             <div class="mb-3">
+                <label for="technique" class="form-label">Техника</label>
+                <select class="form-select" aria-label="Default select example" name="technique_id" id="technique">
+                    @foreach($techniques as $technique)
+                    <option value="{{ $technique->id }}">{{ $technique->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="date_creation" class="form-label">Дата</label>
+                <input type="date" name="date_creation" id="date" class="form-control">
+            </div>
+
+            <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Создать</button>
             </div>
         </form>

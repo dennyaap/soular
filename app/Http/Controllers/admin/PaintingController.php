@@ -39,7 +39,7 @@ class PaintingController extends Controller
 
         Painting::create(array_merge(
             ['image' => $path],
-            $request->only(['title', 'price', 'style_id', 'plot_id', 'technique_id', 'material_id', 'artist_id', 'description', 'width', 'height', 'date_creation']),
+            $request->except(['_token', 'image']),
         ));
         
 
@@ -58,6 +58,7 @@ class PaintingController extends Controller
 
     public function edit(Painting $painting) {
         return view('admins.paintings.update', [
+            'painting' => Painting::where('id', $painting->id)->first(),
             'styles' => Style::all(),
             'plots' => Plot::all(),
             'materials' => Material::all(),
@@ -67,8 +68,8 @@ class PaintingController extends Controller
     }
 
     public function update(PaintingRequest $request, Painting $painting) {
-        $newPath = FileService::update($painting->image, $request->file('image'), '/paintings');
-
+        $newPath = FileService::update($painting->image, $request->file('image'), '/paintings/');
+        
         if($newPath) {
             if($painting->update(['image' => $newPath] + $request->except(['_token', 'image']))) {
 
