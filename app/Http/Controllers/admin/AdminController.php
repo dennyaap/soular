@@ -15,11 +15,21 @@ class AdminController extends Controller
     }
 
     public function checkLogin(Request $request) {
-        if (Auth::attempt($request->only(['login', 'password']))) {
+        if (auth('admin')->attempt($request->only(['login', 'password']))) {
             $request->session()->regenerate();
 
             return to_route('admin.orders.index');
         }
         return back()->withErrors(['errorLogin' => 'Неверный логин или пароль']);
+    }
+
+    public function logout(Request $request)
+    {
+        auth('admin')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return to_route('index');
     }
 }
