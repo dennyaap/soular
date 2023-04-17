@@ -84,6 +84,17 @@ Route::middleware('auth:admin')->group(function() {
         Route::delete('/techniques/{technique}', 'destroy')->name('techniques.destroy');
     });
 
+    Route::controller(\App\Http\Controllers\admin\StatusController::class)->group(function() {
+        Route::get('/statuses', 'index')->name('statuses.index');
+        Route::get('/statuses/create', 'create')->name('statuses.create');
+        Route::post('/statuses', 'store')->name('statuses.store');
+
+        Route::get('/statuses/edit/{status}', 'edit')->name('statuses.edit');
+        Route::patch('/statuses/update/{status}', 'update')->name('statuses.update');
+
+        Route::delete('/statuses/{status}', 'destroy')->name('statuses.destroy');
+    });
+
     Route::controller(\App\Http\Controllers\admin\OrderController::class)->group(function() {
         Route::get('/orders', 'orders')->name('orders.index');
         Route::patch('/orders/updateStatus/{order}', 'updateStatus')->name('orders.updateStatus');

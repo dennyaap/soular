@@ -94,6 +94,11 @@
                         aria-current="true">
                         <i class="fas fa-solid fa-calendar-check fa-fw"></i><span>Заказы</span>
                     </a>
+                    <a href="{{ route('admin.statuses.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-solid fa-check fa-fw"></i><span>Статусы заказа</span>
+                    </a>
                     <a href="{{ route('admin.paintings.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
