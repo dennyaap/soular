@@ -9,7 +9,7 @@
                     <a href="{{ route('paintings.index') }}">ГАЛЕРЕЯ</a>
                 </li>
                 <li class="navbar__link">
-                    <a href="#">НАШИ ХУДОЖНИКИ</a>
+                    <a href="{{ route('artists.index') }}">НАШИ ХУДОЖНИКИ</a>
                 </li>
                 <li class="navbar__link">
                     <a href="{{ route('about.index') }}">О НАС</a>
