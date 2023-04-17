@@ -46,7 +46,7 @@
                     <td>{{ $artist->patronymic}}</td>
                     <td class="text-center">{{ $artist->age }}</td>
                     <td>
-                        <a href="{{ route('artists.index') . '?id=' . $artist->id }}"
+                        <a href="{{ route('artist.index') . '?id=' . $artist->id }}"
                             class="btn btn-primary p2 flex-fill">Подробнее</a>
                     </td>
                     <td>
