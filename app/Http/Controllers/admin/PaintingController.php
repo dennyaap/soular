@@ -19,7 +19,7 @@ class PaintingController extends Controller
 {
     public function index() {
         return view('admins.paintings.index', [
-            'paintings' => Painting::all(),
+            'paintings' => Painting::latest('created_at')->get(),
             'plots' => Plot::take(3)->get()
         ]);
     }

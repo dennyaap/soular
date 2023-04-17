@@ -12,7 +12,7 @@ class ArtistController extends Controller
 {
     public function index() {
         return view('admins.artists.index', [
-            'artists' => Artist::all(),
+            'artists' => Artist::latest('created_at')->get(),
         ]);
     }
 
