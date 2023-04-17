@@ -163,7 +163,7 @@ const createCard = ({
                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
                         <img
-                            src="{{ asset('/images/paintings/'. '${image}') }}"
+                            src="{{ url('storage/paintings/'. '${image}') }}"
                             class="img-fluid" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">

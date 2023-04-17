@@ -92,17 +92,17 @@
                     <a href="{{ route('admin.orders.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
-                        <i class="fas fa-list fa-fw"></i><span>Заказы</span>
+                        <i class="fas fa-solid fa-calendar-check fa-fw"></i><span>Заказы</span>
                     </a>
                     <a href="{{ route('admin.paintings.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
-                        <i class="fas fa-list fa-fw"></i><span>Товары</span>
+                        <i class="fas fa-regular fa-palette fa-fw"></i><span>Товары</span>
                     </a>
                     <a href="{{ route('admin.artists.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
-                        <i class="fas fa-list fa-fw"></i><span>Художники</span>
+                        <i class="fas fa-users-line fa-fw"></i><span>Художники</span>
                     </a>
                     <a href="{{ route('admin.plots.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
