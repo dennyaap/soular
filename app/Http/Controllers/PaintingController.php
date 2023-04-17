@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\DB;
 class PaintingController extends Controller
 {
     public function index() {
-        $paintings = Painting::with('artist')->latest('created_at')->take(4)->get();
+        
+        $paintings = Painting::doesntHave('orderContent')->with('artist')->latest('created_at')->take(4)->get();
         $plots = Plot::all();
 
         return view('main', compact('paintings', 'plots'));
