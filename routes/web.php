@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaintingController;
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BasketController;
 
@@ -29,6 +30,13 @@ Route::controller(PaintingController::class)->group(function() {
     Route::post('/paintings/getAll', 'getAll')->name('paintings.getAll');
     
     Route::get('/painting/', 'painting')->name('painting.index');
+});
+
+Route::controller(ArtistController::class)->group(function() {
+    Route::get('/artists', 'artists')->name('artists.index');
+    Route::post('/artists/getAll', 'getAll')->name('artists.getAll');
+    
+    Route::get('/artist/', 'artist')->name('artist.index');
 });
 
 Route::middleware('guest')->group(function() {
@@ -86,6 +94,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/paintings/update/{painting}', 'update')->name('paintings.update');
         
         Route::delete('/paintings/{painting}', 'destroy')->name('paintings.destroy');
+    });
+
+    Route::controller(\App\Http\Controllers\admin\ArtistController::class)->group(function() {
+        Route::get('/artists', 'index')->name('artists.index');
+        Route::get('/artists/create', 'create')->name('artists.create');
+        Route::post('/artists', 'store')->name('artists.store');
+        
+        Route::get('/artists/edit/{artist}', 'edit')->name('artists.edit');
+        Route::patch('/artists/update/{artist}', 'update')->name('artists.update');
+        
+        Route::delete('/artists/{artist}', 'destroy')->name('artists.destroy');
     });
 
     Route::controller(\App\Http\Controllers\admin\AdminController::class)->group(function() {

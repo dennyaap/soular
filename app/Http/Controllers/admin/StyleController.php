@@ -32,7 +32,7 @@ class StyleController extends Controller
 
     public function destroy(Style $style) {
         if($style->delete()) {
-            return back()->with(['message'=>'Товар успешно удален']);
+            return back()->with(['message'=>'Стиль успешно удален']);
         }
 
         return back()->withErrors(['error' => 'Возникли ошибки удаления']);

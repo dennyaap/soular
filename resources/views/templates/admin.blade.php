@@ -99,6 +99,11 @@
                         aria-current="true">
                         <i class="fas fa-list fa-fw"></i><span>Товары</span>
                     </a>
+                    <a href="{{ route('admin.artists.index') }}"
+                        class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
+                        aria-current="true">
+                        <i class="fas fa-list fa-fw"></i><span>Художники</span>
+                    </a>
                     <a href="{{ route('admin.plots.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple d-flex align-items-center gap-3"
                         aria-current="true">
