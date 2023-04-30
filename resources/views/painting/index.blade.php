@@ -25,6 +25,7 @@
                     <span class="price">{{ $painting->price }} Р</span>
                 </div>
 
+                @if($isAuth)
                 @if($isBasket)
                 <a class="btn btn__add-basket mt-2" href="{{ route('basket.index') }}">
                     В корзине
@@ -35,6 +36,13 @@
                     Добавить в корзину
                 </button>
                 @endif
+                @else
+                <a class="btn btn__add-basket mt-2" href="{{ route('user.login') }}">
+                    Добавить в корзину
+                </a>
+                @endif
+
+
 
                 <p class="lead mt-4 description">Стиль: {{ $painting->style->name}}</p>
                 <p class="lead mt-4 description">Материал: {{ $painting->material->name}}</p>

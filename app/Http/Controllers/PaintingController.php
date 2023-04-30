@@ -10,6 +10,7 @@ use App\Models\Plot;
 use App\Models\Style;
 use App\Models\Technique;
 use App\Models\Material;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PaintingController extends Controller
@@ -68,12 +69,13 @@ class PaintingController extends Controller
 
     public function painting(Request $request) {
         $paintingId = $_GET['id'];
+        $isAuth = Auth::check();
         $isBasket = auth()->user() && Basket::getPaintingById($paintingId);
 
         $painting = Painting::where('id', $paintingId)->with('artist', 'technique', 'material', 'plot', 'style')->first();
         $otherPaintings = Painting::doesntHave('orderContent')->where('id', '!=', $painting->id)->where('artist_id', $painting->artist->id)->take(3)->get();
         
         
-        return view('painting.index', compact('painting', 'otherPaintings', 'isBasket'));
+        return view('painting.index', compact('painting', 'otherPaintings', 'isBasket', 'isAuth'));
     }
 }
