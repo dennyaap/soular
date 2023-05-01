@@ -76,7 +76,7 @@
         <nav id="sidebarMenu" class="navbar-collapse collapse d-lg-block sidebar bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
-                    <a href="{{ route('user.orders.index') }}"
+                    <a href="{{ route('admin.orders.index') }}"
                         class="list-group-item list-group-item-action py-2 ripple avatar-nam d-flex align-items-center gap-3 user-name"
                         aria-current="true">
                         <i class="fas fa-user fa-fw"></i>

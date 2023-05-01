@@ -43,7 +43,7 @@
             </tbody>
         </table>
         <div class="pt-5">
-            <h6 class="mb-0"><a href="{{ route('user.orders.index') }}" class="text-body"><i
+            <h6 class="mb-0"><a href="{{ route('admin.orders.index') }}" class="text-body"><i
                         class="fas fa-long-arrow-alt-left me-2"></i>Вернуться к заказам</a></h6>
         </div>
     </div>

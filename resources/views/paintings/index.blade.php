@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/paintings/main.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/paintings/card.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/pagination.css') }}" />
-
+<link rel="stylesheet" href="{{ asset('css/search.css') }}">
 @endpush
 
 @section('content')
@@ -71,6 +71,21 @@
     <div class="paintings">
         <div class="row filter">
             <div class="col-3 d-none d-sm-none d-lg-block">
+                <div class="search-container mb-3">
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="input-box" placeholder="Поиск художника.." autocomplete="off">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <div class="result-box">
+                            <ul id="result-box">
+                                <li>JavaScript</li>
+                                <li>Web development</li>
+                                <li>C#</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="accordion filter-container" id="accordionPanelsStayOpen">
                     <div class="accordion-item filter-style">
                         <h2 class="accordion-header" id="style-headingOne">
@@ -201,6 +216,7 @@
     <script src="{{ asset('js/products/createCards.js') }}"></script>
     <script src="{{ asset('js/products/filter.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
+    <script src="{{ asset('js/products/search.js') }}"></script>
 
     <script>
     let products = [];

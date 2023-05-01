@@ -1,0 +1,134 @@
+/* ::selection {
+    color: #fff;
+    background: #664aff;
+}
+
+.search-container {
+    max-width: 450px;
+}
+
+.search-container .searchInput {
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+}
+
+.searchInput input {
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    border-bottom: 1px solid #d1d0d0;
+    padding: 0px 20px;
+}
+
+.searchInput.active input {
+    border-radius: 5px 5px 0 0;
+}
+
+.searchInput .resultBox {
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    width: 100%;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 5;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.searchInput.active .resultBox {
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.resultBox li {
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.searchInput.active .resultBox li {
+    display: block;
+}
+.resultBox li:hover {
+    background: #efefef;
+}
+
+.searchInput .icon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 20px;
+    color: var(--color-brown);
+    cursor: pointer;
+    margin-right: 5px;
+} */
+
+.search-container {
+    background: #fff;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    border-bottom: 1px solid #d1d0d0;
+}
+
+.search-box input {
+    flex: 1;
+    height: 50px;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.search-box button {
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.search-box > button .fa-solid {
+    width: 5px;
+    height: 5px;
+    color: var(--color-brown);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+::placeholder {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+.result-box ul {
+    padding: 5px 20px;
+}
+
+.result-box ul li {
+    list-style: none;
+    border-radius: 3px;
+    padding: 5px 0px;
+    cursor: pointer;
+}
+
+.result-box ul li:hover {
+    opacity: 0.5;
+}
