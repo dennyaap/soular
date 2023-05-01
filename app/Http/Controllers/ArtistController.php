@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artist;
 use App\Models\Painting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArtistController extends Controller
 {
@@ -45,5 +46,15 @@ class ArtistController extends Controller
         
         
         return view('artist.index', compact('artist', 'paintings'));
+    }
+
+    public function getSearchArtists(Request $request) {
+        $parameters = $request->data['data'];
+
+        $artists = Artist::select("id", "name", "surname")
+        ->orWhere(DB::raw("concat(name, ' ', surname)"), 'LIKE', "%" . $parameters['artistSearch'] . "%")
+        ->take(5)->get();
+
+        return $artists;
     }
 }

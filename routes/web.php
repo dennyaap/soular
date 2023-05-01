@@ -35,6 +35,7 @@ Route::controller(PaintingController::class)->group(function() {
 Route::controller(ArtistController::class)->group(function() {
     Route::get('/artists', 'artists')->name('artists.index');
     Route::post('/artists/getAll', 'getAll')->name('artists.getAll');
+    Route::post('/artists/getSearchArtists', 'getSearchArtists')->name('artists.getSearchArtists');
     
     Route::get('/artist/', 'artist')->name('artist.index');
 });

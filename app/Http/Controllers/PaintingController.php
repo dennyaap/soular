@@ -59,6 +59,9 @@ class PaintingController extends Controller
         if (!empty($parameters['materialsId'])) {
             $paintings->whereIn('material_id', $parameters['materialsId']);
         }
+        if (isset($parameters['artistId'])) {
+            $paintings->where('artist_id', $parameters['artistId']);
+        }
 
         $countPaintings = $paintings->count();
 

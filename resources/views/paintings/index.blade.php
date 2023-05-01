@@ -79,9 +79,7 @@
                         </div>
                         <div class="result-box">
                             <ul id="result-box">
-                                <li>JavaScript</li>
-                                <li>Web development</li>
-                                <li>C#</li>
+
                             </ul>
                         </div>
                     </div>
@@ -213,6 +211,8 @@
     @push('script')
     <script src="{{ asset('js/fetch.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
+    <script src="{{ asset('js/artist.js') }}"></script>
+    <script src="{{ asset('js/debounce.js') }}"></script>
     <script src="{{ asset('js/products/createCards.js') }}"></script>
     <script src="{{ asset('js/products/filter.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
@@ -532,5 +532,50 @@
             imgElement.onload = () => res(itemElement);
         });
     }
+
+    async function searchArtist(artistId, artistName) {
+        inputBox.value = artistName;
+        resultBox.textContent = "";
+
+        products = await getAllProducts(`{{ csrf_token() }}`, {
+            sortBy,
+            typeSort,
+            stylesId,
+            plotsId,
+            techniquesId,
+            materialsId,
+            currentPage,
+            limit,
+            artistId
+        });
+
+        showCards(products);
+        hideCards(grid.getItems());
+        countPages = await calcPages(products.countPaintings, limit);
+        createPagination(currentPage, countPages);
+    }
+
+    async function handleSearchInput() {
+        let result = [];
+        let inputValue = inputBox.value;
+
+        if (inputValue.length) {
+            result = await getSearchArtists(`{{ csrf_token() }}`, {
+                artistSearch: inputValue.toLowerCase(),
+            });
+
+            console.log(result);
+        }
+
+        display(result);
+
+        if (!inputValue.length) {
+            resultBox.textContent = "";
+        }
+    }
+
+    const debounceSearchInput = debounce(handleSearchInput, 400);
+
+    inputBox.addEventListener('keyup', debounceSearchInput);
     </script>
     @endpush
