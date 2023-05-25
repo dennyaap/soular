@@ -30,7 +30,7 @@
                 @forelse((old('orderContents') ?? $orderContents) as $orderContent)
                 <tr class="align-middle">
                     <td>
-                        <img src="{{ asset('images/paintings/' . $orderContent->painting->image) }}"
+                        <img src="{{ asset('storage/paintings/' . $orderContent->painting->image) }}"
                             class="image-content" alt="{{ $orderContent->painting->title }}">
                     </td>
                     <td>{{ $orderContent->painting->title }}</td>
