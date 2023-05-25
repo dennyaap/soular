@@ -28,7 +28,8 @@ class RegisterRequest extends FormRequest
         return [
             'name'=> ['required', 'regex:/^[а-яё\s\-]+$/iu'],
             'surname'=> ['required', 'regex:/^[а-яё\s\-]+$/iu'],
-            'patronomyc'=> ['required', 'regex:/^[а-яё\s\-]+$/iu'],
+            'patronymic'=> ['required', 'regex:/^[а-яё\s\-]+$/iu'],
+            'phone'=> ['required'],
             'email'=> ['required', 'email', 'unique:users'],
             'password'=> ['required', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/', 'confirmed'],
         ];
@@ -50,9 +51,10 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'Имя',
             'surname' => 'Фамилия',
-            'patronomyc' => 'Отчество',
+            'patronymic' => 'Отчество',
             'email' => 'Почта',
             'password' => 'Пароль',
+            'phone' => 'Телефон',
         ];
     }
 }
