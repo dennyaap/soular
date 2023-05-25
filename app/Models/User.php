@@ -20,10 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'surname',
-        'patronomyc',
+        'patronymic',
         'email',
         'password',
-        'address'
+        'address',
+        'phone'
     ];
 
     public function baskets() {
