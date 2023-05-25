@@ -241,7 +241,7 @@
 
         const plot_id = urlParams.get('plot_id');
 
-        products = await getAllProducts(`{{ csrf_token() }}`, {
+        products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
             sortBy,
             typeSort,
             stylesId,
@@ -262,7 +262,7 @@
 
     sortBySelectElement.addEventListener("change", async (e) => {
         sortBy = e.target.value;
-        products = await getAllProducts(`{{ csrf_token() }}`, {
+        products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
             sortBy,
             typeSort,
             stylesId,
@@ -281,7 +281,7 @@
 
     sortTypeSelectElement.addEventListener("change", async (e) => {
         typeSort = e.target.value;
-        products = await getAllProducts(`{{ csrf_token() }}`, {
+        products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
             sortBy,
             typeSort,
             stylesId,
@@ -306,16 +306,17 @@
 
             stylesId = [...checkedCheckboxes].map((item) => item.value);
 
-            products = await getAllProducts(`{{ csrf_token() }}`, {
-                sortBy,
-                typeSort,
-                stylesId,
-                plotsId,
-                techniquesId,
-                materialsId,
-                currentPage,
-                limit
-            });
+            products = await getAllProducts(`{{ csrf_token() }}`,
+                '{{ route("paintings.getAll") }}', {
+                    sortBy,
+                    typeSort,
+                    stylesId,
+                    plotsId,
+                    techniquesId,
+                    materialsId,
+                    currentPage,
+                    limit
+                });
 
             hideCards(grid.getItems());
             showCards(products);
@@ -332,16 +333,17 @@
 
             plotsId = [...checkedCheckboxes].map((item) => item.value);
 
-            products = await getAllProducts(`{{ csrf_token() }}`, {
-                sortBy,
-                typeSort,
-                stylesId,
-                plotsId,
-                techniquesId,
-                materialsId,
-                currentPage,
-                limit
-            });
+            products = await getAllProducts(`{{ csrf_token() }}`,
+                '{{ route("paintings.getAll") }}', {
+                    sortBy,
+                    typeSort,
+                    stylesId,
+                    plotsId,
+                    techniquesId,
+                    materialsId,
+                    currentPage,
+                    limit
+                });
 
             hideCards(grid.getItems());
             showCards(products);
@@ -358,16 +360,17 @@
 
             techniquesId = [...checkedCheckboxes].map((item) => item.value);
 
-            products = await getAllProducts(`{{ csrf_token() }}`, {
-                sortBy,
-                typeSort,
-                stylesId,
-                plotsId,
-                techniquesId,
-                materialsId,
-                currentPage,
-                limit
-            });
+            products = await getAllProducts(`{{ csrf_token() }}`,
+                '{{ route("paintings.getAll") }}', {
+                    sortBy,
+                    typeSort,
+                    stylesId,
+                    plotsId,
+                    techniquesId,
+                    materialsId,
+                    currentPage,
+                    limit
+                });
 
             hideCards(grid.getItems());
             showCards(products);
@@ -385,16 +388,17 @@
 
             materialsId = [...checkedCheckboxes].map((item) => item.value);
 
-            products = await getAllProducts(`{{ csrf_token() }}`, {
-                sortBy,
-                typeSort,
-                stylesId,
-                plotsId,
-                techniquesId,
-                materialsId,
-                currentPage,
-                limit
-            });
+            products = await getAllProducts(`{{ csrf_token() }}`,
+                '{{ route("paintings.getAll") }}', {
+                    sortBy,
+                    typeSort,
+                    stylesId,
+                    plotsId,
+                    techniquesId,
+                    materialsId,
+                    currentPage,
+                    limit
+                });
 
             hideCards(grid.getItems());
             showCards(products);
@@ -412,7 +416,7 @@
         techniquesId = [];
         materialsId = [];
 
-        products = await getAllProducts(`{{ csrf_token() }}`, {
+        products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
             sortBy,
             typeSort,
             stylesId,
@@ -445,7 +449,7 @@
         if (page > 0 && page <= countPages) {
             currentPage = page;
 
-            products = await getAllProducts(`{{ csrf_token() }}`, {
+            products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
                 sortBy,
                 typeSort,
                 stylesId,
@@ -479,7 +483,7 @@
         itemElement.style.cursor = "pointer";
 
         itemElement.addEventListener("click", (e) => {
-            window.location.href = `http://127.0.0.1:8000/painting/?id=${id}`;
+            window.location.href = "{{ route('painting.index') }}" + `?id=${id}`;
         });
 
         let itemContentElement = document.createElement("div");
@@ -537,7 +541,7 @@
         inputBox.value = artistName;
         resultBox.textContent = "";
 
-        products = await getAllProducts(`{{ csrf_token() }}`, {
+        products = await getAllProducts(`{{ csrf_token() }}`, '{{ route("paintings.getAll") }}', {
             sortBy,
             typeSort,
             stylesId,
