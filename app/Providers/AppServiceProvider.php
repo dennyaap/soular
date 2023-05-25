@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Service\PaymentService;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,8 +14,10 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {
-        //
+    {  
+        $this->app->bind(PaymentService::class, function($app) {
+            return new PaymentService();
+        });
     }
 
     /**
