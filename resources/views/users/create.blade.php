@@ -60,13 +60,13 @@
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <label class="form-label" for="patronomyc">Отчество</label>
+                                            <label class="form-label" for="patronymic">Отчество</label>
 
-                                            <input type="text" id="patronomyc"
-                                                class="form-control @error('patronomyc') in-invalid @enderror"
-                                                name="patronomyc" value="{{ old('patronomyc') }}" />
+                                            <input type="text" id="patronymic"
+                                                class="form-control @error('patronymic') in-invalid @enderror"
+                                                name="patronymic" value="{{ old('patronymic') }}" />
 
-                                            @error('patronomyc')
+                                            @error('patronymic')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -83,6 +83,21 @@
                                                 value="{{ old('email') }}" />
 
                                             @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <label class="form-label" for="phone">Телефон</label>
+
+                                            <input type="text" id="phone"
+                                                class="form-control @error('phone') in-invalid @enderror" name="phone"
+                                                value="{{ old('phone') }}" placeholder="+79904343423" />
+
+                                            @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
