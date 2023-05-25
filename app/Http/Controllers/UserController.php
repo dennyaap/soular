@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 
-use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,12 +19,9 @@ class UserController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        //1. создать пользоватя
-        //2. войти
-        //3. перейти на личную страницу
         $user = User::create(array_merge(
             ['password' => Hash::make($request->password)],
-            $request->only(['name', 'surname', 'patronomyc', 'email', 'address'])
+            $request->only(['name', 'surname', 'patronymic', 'email', 'address', 'phone'])
         ));
 
         auth()->login($user);
