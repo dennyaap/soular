@@ -2,37 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
 use App\Http\Resources\BasketResource;
 use App\Models\Basket;
 use App\Models\Order;
 use App\Models\OrderContent;
-use App\Models\Painting;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
     public function index() {
-        // $user_id = auth()->id();
-        // $BasketPaintings = Basket::all()->where('user_id', $user_id);
+        $userName = Auth::user()->surname . ' ' . Auth::user()->name . ' ' . Auth::user()->patronymic;
+        $userEmail = Auth::user()->email;
+        $userAddress = Auth::user()->address;
+        $userPhone = Auth::user()->phone;
         
-        // $totalPrice = $BasketPaintings->sum('summary');
-
-        return view('basket.index');
+        return view('checkout.index', compact('userName', 'userEmail', 'userAddress', 'userPhone'));
     }
 
     public function add(Request $request) {
         $paintingId = $request->data['paintingId'];
-        // Получаем продукт в корзине у авторизованного пользователя
         $isBasket = Basket::getPaintingById($paintingId) == null;
 
-        //Проверяем есть ли продукт в корзине
 
         if ($isBasket) {
             $basketPainting = Basket::create([
-                'user_id' => auth()->id(), //auth()->user()->id
+                'user_id' => auth()->id(),
                 'painting_id' => $paintingId,
             ]);
         }
@@ -50,7 +45,6 @@ class BasketController extends Controller
     }
 
     public function getUserPaintings() {
-        // Получаем продукт в корзине у авторизованного пользователя
         $basketPaintings = Basket::getUserBasketPaintings();
 
         $paintings = [];
@@ -68,9 +62,10 @@ class BasketController extends Controller
         $user_id = auth()->id();
         
         $order = Order::create([
-            'user_id' => $user_id, //auth()->user()->id
+            'user_id' => $user_id,
             'status_id' => 1,
-            'total_price' => $request->data['totalPrice']
+            'total_price' => $request->data['totalPrice'],
+            'type_shipping' => $request->data['typeShipping']
         ]);
 
         $basketProducts = Basket::getBasket()->get();
@@ -106,4 +101,6 @@ class BasketController extends Controller
 
         return 'false';
     }
+
+    
 }
