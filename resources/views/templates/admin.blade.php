@@ -147,8 +147,8 @@
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="profile-logo px-3" href="#">
-                    Soul Ar
+                <a class="profile-logo px-3" href="{{ route('user.orders.index') }}">
+                    Soul Art
                 </a>
                 <!-- Toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
