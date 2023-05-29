@@ -4,7 +4,8 @@
             @foreach($plots as $index => $plot)
             <div class="{{ $index != 2 ? 'col-sm-3' : 'col-sm-6' }} element-animation">
                 <div class="card border-0">
-                    <img src="{{ url('storage/plots/' . $plot->image) }}" class="card-img-top" alt="{{ $plot->name }}">
+                    <img src="{{ asset('storage/plots/' . $plot->image) }}" class="card-img-top"
+                        alt="{{ $plot->name }}">
                     <div class="card-body">
                         <div class="card-body__container">
                             <h5 class="card-title">{{ $plot->name }}</h5>
