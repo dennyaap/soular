@@ -80,7 +80,7 @@
                         class="list-group-item list-group-item-action py-2 ripple avatar-nam d-flex align-items-center gap-3 user-name"
                         aria-current="true">
                         <i class="fas fa-user fa-fw"></i>
-                        <span>Денис</span>
+                        <span>{{ auth()->user()->name }} {{ auth()->user()->surname }}</span>
                     </a>
                 </div>
                 <div class="list-group list-group-flush mx-3 mt-4 d-flex gap-2">
@@ -112,8 +112,8 @@
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="profile-logo px-3" href="#">
-                    Soul Ar
+                <a class="profile-logo px-3" href="{{ route('index') }}">
+                    Soul Art
                 </a>
                 <!-- Toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
