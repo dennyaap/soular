@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->double('total_price');
+            $table->enum('type_shipping', ['MAIL', 'PICKUP'])->default('MAIL');
             $table->timestamps();
 
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete()->cascadeOnUpdate();
