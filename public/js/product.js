@@ -1,6 +1,6 @@
-async function getAllProducts(csrf_token, data = {}) {
+async function getAllProducts(csrf_token, route, data = {}) {
     return await postJSON(
-        "http://127.0.0.1:8000/paintings/getAll",
+        route,
         {
             data,
         },

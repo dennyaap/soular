@@ -86,7 +86,7 @@
 
 
     (async () => {
-        artists = await getAllArtists(`{{ csrf_token() }}`, {
+        artists = await getAllArtists(`{{ csrf_token() }}`, '{{ route("artists.getAll") }}' {
             currentPage,
             limit
         });

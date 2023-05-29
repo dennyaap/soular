@@ -1,6 +1,6 @@
-async function getAllArtists(csrf_token, data = {}) {
+async function getAllArtists(csrf_token, route, data = {}) {
     return await postJSON(
-        "http://127.0.0.1:8000/artists/getAll",
+        route,
         {
             data,
         },
@@ -8,9 +8,9 @@ async function getAllArtists(csrf_token, data = {}) {
     );
 }
 
-async function getSearchArtists(csrf_token, data = {}) {
+async function getSearchArtists(csrf_token, route, data = {}) {
     return await postJSON(
-        "http://127.0.0.1:8000/artists/getSearchArtists",
+        route,
         {
             data,
         },

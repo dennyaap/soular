@@ -564,7 +564,7 @@
         let inputValue = inputBox.value;
 
         if (inputValue.length) {
-            result = await getSearchArtists(`{{ csrf_token() }}`, {
+            result = await getSearchArtists(`{{ csrf_token() }}`, '{{ route("artists.getSearchArtists") }}' {
                 artistSearch: inputValue.toLowerCase(),
             });
 
