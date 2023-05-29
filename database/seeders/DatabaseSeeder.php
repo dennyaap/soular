@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MaterialSeeder::class,
             TechniqueSeeder::class,
             PaintingSeeder::class,
+            StatusSeeder::class,
         ]);
     }
 }

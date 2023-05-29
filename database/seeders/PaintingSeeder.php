@@ -18,7 +18,7 @@ class PaintingSeeder extends Seeder
         DB::table('paintings')->insert([
             [
                 'title' => 'Destiny II Painting',
-                'image' => 'p1.jpg',
+                'image' => '7BzyQHqPoGCJaN9gODADHp2XiEuunnnrt9nRJmCo.jpg',
                 'price' => 6000.0,
                 'description' => 'Описание',
                 'width' => 16,
@@ -34,7 +34,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'A LA MAISON',
-                'image' => 'p5.jpg',
+                'image' => 'bJ7WQ7wAJuHoctmiCuIY0A1RjSLkX00fm0yJGO9P.jpg',
                 'price' => 8000.0,
                 'description' => 'Описание',
                 'width' => 20,
@@ -50,7 +50,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'Still life with wild flowers',
-                'image' => 'p6.jpg',
+                'image' => 'hjbMDqhQZHXZIgUGI7mH7KbBdYIrWMCgh4S80CUC.jpg',
                 'price' => 4000.0,
                 'description' => 'Описание',
                 'width' => 12,
@@ -66,7 +66,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'Cactus Garden Painting',
-                'image' => 'p3.jpg',
+                'image' => 'bdSLFifJE9wvdj7ccvOD4wxo2S8k0KKTCNOQ4bus.jpg',
                 'price' => 3000.0,
                 'description' => 'Описание',
                 'width' => 24,
@@ -82,7 +82,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'Dreamer',
-                'image' => 'p4.jpg',
+                'image' => 'dfQ2ZJliYAY9iNm94MkNXA8FJw9X1TttR28uYzLn.jpg',
                 'price' => 7000.0,
                 'description' => 'Описание',
                 'width' => 24,
@@ -98,7 +98,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'Infinity',
-                'image' => 'img2.jpg',
+                'image' => 'puZkW5Mu4jGq0KUKf21ceCZwNQ5li9cx7pOCS17V.jpg',
                 'price' => 9000.0,
                 'description' => 'Описание',
                 'width' => 18,
@@ -114,7 +114,7 @@ class PaintingSeeder extends Seeder
             ],
             [
                 'title' => 'Spring forest',
-                'image' => 'water-painting.jpg',
+                'image' => 'km8mTKxzcZaLxgZUyRmmnnoX5yUSgqzB10gI5SeY.jpg',
                 'price' => 6000.0,
                 'description' => 'Описание',
                 'width' => 18,
