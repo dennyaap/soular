@@ -1,7 +1,7 @@
 <nav class="container-fluid navbar fixed-top navbar-expand-lg" id="navbar">
     <div class="container navbar__container navbar__content">
         <div class="navbar__logo">
-            <a href="{{ route('index') }}">Soul Ar</a>
+            <a href="{{ route('index') }}">Soul Art</a>
         </div>
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarTogglerDemo02">
             <ul class="navbar-nav navbar__links">
@@ -15,7 +15,7 @@
                     <a href="{{ route('about.index') }}">О НАС</a>
                 </li>
                 <li class="navbar__link">
-                    <a href="#">КОНТАКТЫ</a>
+                    <a href="{{ route('contacts.index') }}">КОНТАКТЫ</a>
                 </li>
             </ul>
         </div>
