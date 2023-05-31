@@ -1,0 +1,46 @@
+.contacts {
+    margin-top: 120px;
+}
+
+.section__description-sub__title {
+    margin: 0;
+}
+
+.header__title::before {
+    content: url(../../../images/brush.png);
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    text-align: center;
+    top: -30%;
+    left: -1%;
+    transform: rotate(-156deg);
+}
+
+.contacts-information {
+    margin-top: 110px;
+}
+
+.contacts-title {
+    font-family: "Arsenica";
+}
+
+.section__line {
+    background-color: var(--color-light-brown);
+}
+
+.contacts-content .section__line {
+    width: 100%;
+}
+
+.contacts-information {
+    color: var(--color-brown);
+}
+
+.contacts-label {
+    font-size: 14px;
+}
+
+.contacts-text {
+    color: var(--color-dark-brown);
+}

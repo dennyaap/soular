@@ -24,6 +24,10 @@ Route::get('/about', function () {
     return view('about.index');
 })->name('about.index');
 
+Route::get('/contacts', function () {
+    return view('contacts.index');
+})->name('contacts.index');
+
 
 Route::controller(PaintingController::class)->group(function() {
     Route::get('/', 'index')->name('index');

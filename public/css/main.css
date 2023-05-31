@@ -63,7 +63,8 @@
     box-sizing: border-box;
     font-family: "Roboto";
     --color-brown: rgba(179, 143, 103, 1);
-    --color-dark-brown: #644b38;
+    --color-brown2: #8b6e3e;
+    --color-dark-brown: #534637;
     --color-light-brown: #c7b49d;
 }
 
