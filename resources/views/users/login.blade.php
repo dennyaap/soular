@@ -1,6 +1,6 @@
 @extends('templates.app')
 
-@section('title', 'Регистрация')
+@section('title', 'Авторизация')
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('css/login/main.css') }}" />
