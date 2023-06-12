@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav m-auto gap-4">
                 <li class="nav-item navbar__link">
                     <a href="{{ route('paintings.index') }}" class="nav-link">ГАЛЕРЕЯ</a>
                 </li>

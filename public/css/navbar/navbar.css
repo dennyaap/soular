@@ -54,15 +54,15 @@
 .navbar.navbar-colored {
     background: linear-gradient(
         to right,
-        rgba(110, 154, 183, 0.4) 0%,
-        rgba(110, 154, 183, 0.4) 20%,
-        rgba(179, 143, 103, 0.4) 60%
+        rgba(110, 154, 183, 0.7) 0%,
+        rgba(110, 154, 183, 0.7) 20%,
+        rgba(179, 143, 103, 0.7) 60%
     );
     backdrop-filter: blur(22px);
     border: none;
 }
 .navbar.navbar-colored a {
-    color: #fff;
+    color: #fff !important;
 }
 
 /* .navbar-collapse.show .navbar-nav > li {
