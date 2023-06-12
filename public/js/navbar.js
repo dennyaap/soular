@@ -10,5 +10,3 @@ window.onscroll = () => {
         navbarElement.classList.remove("navbar-colored");
     }
 };
-
-console.log("hello");

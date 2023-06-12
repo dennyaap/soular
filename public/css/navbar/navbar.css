@@ -1,12 +1,13 @@
 .navbar {
     border-bottom: 1px solid rgba(69, 51, 38, 0.5);
-    height: 80px;
     display: flex;
     align-items: center;
     font-family: "Roboto";
     font-weight: 300;
 
     color: var(--color-dark-brown);
+
+    z-index: 12;
 }
 
 .navbar a {
@@ -53,22 +54,91 @@
 .navbar.navbar-colored {
     background: linear-gradient(
         to right,
-        rgba(110, 154, 183, 1) 0%,
-        rgba(110, 154, 183, 1) 20%,
-        rgba(179, 143, 103, 1) 60%
+        rgba(110, 154, 183, 0.4) 0%,
+        rgba(110, 154, 183, 0.4) 20%,
+        rgba(179, 143, 103, 0.4) 60%
     );
-
+    backdrop-filter: blur(22px);
     border: none;
 }
-
 .navbar.navbar-colored a {
     color: #fff;
 }
 
-.navbar.navbar-colored .navbar__link {
+/* .navbar-collapse.show .navbar-nav > li {
+    font-size: 36px;
+} */
+
+.navbar__link {
     font-weight: 300;
 }
 
 .navbar.navbar-colored .navbar__img path {
     stroke: #fff;
+}
+
+/* .navbar-collapse.show ul {
+    height: 100vh;
+    color: #fff;
+    gap: 12px;
+} */
+
+.modal {
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(22px);
+}
+
+.modal.left .modal-dialog {
+    margin: auto;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal-dialog {
+    width: 100%;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog {
+    top: -320px;
+    -webkit-transition: opacity 0.3s linear, top 1s ease-out;
+    -moz-transition: opacity 0.3s linear, top 1s ease-out;
+    -o-transition: opacity 0.3s linear, top 1s ease-out;
+    transition: opacity 0.3s linear, top 1s ease-out;
+}
+
+.modal.left.fade.show .modal-dialog {
+    top: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+.modal-content {
+    border-radius: 0;
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+.modal-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 65px;
+}
+
+.modal-body a {
+    padding: 15px;
+    font-size: 32px;
+    color: #fff;
 }
