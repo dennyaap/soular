@@ -28,14 +28,13 @@
                     <th>Название</th>
                     <th>Категория</th>
                     <th>Цена</th>
-                    <th class="text-center">Дата</th>
                     <th></th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @forelse((old('paintings') ?? $paintings) as $painting)
+                @forelse($paintings as $painting)
                 <tr class="align-middle">
                     <td>
                         <img src="{{ url('storage/paintings/' . $painting->image) }}" class="card-img card-img-top"
@@ -44,7 +43,6 @@
                     <td>{{ $painting->title }}</td>
                     <td>{{ $painting->style->name }}</td>
                     <td>{{ $painting->price}} р.</td>
-                    <td class="text-center">{{ $painting->dateClassic }}</td>
                     <td>
                         <a href="{{ route('painting.index') . '?id=' . $painting->id }}"
                             class="btn btn-primary p2 flex-fill">Подробнее</a>
