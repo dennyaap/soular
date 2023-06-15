@@ -80,7 +80,7 @@
                         class="list-group-item list-group-item-action py-2 ripple avatar-nam d-flex align-items-center gap-3 user-name"
                         aria-current="true">
                         <i class="fas fa-user fa-fw"></i>
-                        <span>{{ auth()->user()->name }} {{ auth()->user()->surname }}</span>
+                        <span>{{ auth()->user()->login }}</span>
                     </a>
                 </div>
                 <div class="list-group list-group-flush mx-3 mt-4 d-flex gap-2">
