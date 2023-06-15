@@ -44,8 +44,13 @@ class PaintingController extends Controller
         $limit = isset($parameters['limit']) ? $parameters['limit'] : 10;
         $offset = ($currentPage - 1) * $limit;
 
+        $basketPaintings = [];
 
-        $paintings = Painting::doesntHave('orderContent')->orderBy($sortBy, $typeSort)->with('artist', 'technique');
+        if(auth()->check()) {
+            $basketPaintings = Basket::select('painting_id')->where('user_id', auth()->user()->id)->get();
+        }
+
+        $paintings = Painting::doesntHave('orderContent')->orderBy($sortBy, $typeSort)->with('artist', 'technique')->whereNotIn('id', $basketPaintings);
 
         if (!empty($parameters['stylesId'])) {
             $paintings->whereIn('style_id', $parameters['stylesId']);

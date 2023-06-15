@@ -165,6 +165,8 @@ const descriptionOptions = {
     'PICKUP': 'После оплаты товар надежно хранится на складе до тех пор, пока вы лично не заберете его.',
 }
 
+const countBasketElement = document.getElementById('countBasket');
+
 let cartProducts = []; //cart products
 
 let typeShipping = 'MAIL';
@@ -237,6 +239,12 @@ async function destroyProduct(paintingId) {
     cartProducts = cartProducts.filter((product) => product.painting_id !== cartProduct.painting_id)
     createCards(cartProducts);
     totalPriceElement.textContent = `${calcPriceProducts(cartProducts)} руб.`;
+
+    if (+countBasket.textContent - 1 == 0) {
+        countBasket.textContent = '';
+    } else {
+        countBasket.textContent = +countBasket.textContent - 1;
+    }
 
     if (!cartProducts.length) {
         btnShowModal.style.display = 'none';

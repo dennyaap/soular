@@ -21,7 +21,7 @@
                 </li>
             </ul>
             <form class="navbar__buttons">
-                <a href="{{ route('basket.index') }}">
+                <a href="{{ route('basket.index') }}" class="position-relative">
                     <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg"
                         class="navbar__img">
                         <path
@@ -29,6 +29,10 @@
                             stroke="#453326" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
+                    <span class="position-absolute start-100 translate-middle badge rounded-pill navbarCountBasket"
+                        id="countBasket">
+                        {{ ( auth()->check() ? App\Models\Basket::where('user_id', auth()->user()->id)->count() : 0) > 0 ? App\Models\Basket::where('user_id', auth()->user()->id)->count() : '' }}
+                    </span>
                 </a>
                 <a href="{{ route('user.orders.index') }}">
                     <svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg"

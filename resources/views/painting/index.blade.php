@@ -87,10 +87,14 @@
 <script>
 const btnAddBasket = document.getElementById('btn__add-basket');
 
+const countBasketElement = document.getElementById('countBasket');
+
 btnAddBasket.addEventListener('click', async (e) => {
     e.preventDefault();
     await addBasket(e.target.dataset.id).then(() => {
         btnAddBasket.textContent = 'В корзине';
+
+        countBasketElement.textContent = +countBasketElement.textContent + 1;
 
         btnAddBasket.addEventListener('click', async (e) => {
             goTo(`{{ route('basket.index') }}`);

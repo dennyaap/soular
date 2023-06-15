@@ -61,7 +61,8 @@
     backdrop-filter: blur(22px);
     border: none;
 }
-.navbar.navbar-colored a {
+.navbar.navbar-colored a,
+.navbar.navbar-colored .navbarCountBasket {
     color: #fff !important;
 }
 
@@ -141,4 +142,10 @@
     padding: 15px;
     font-size: 32px;
     color: #fff;
+}
+
+.badge {
+    top: 20px;
+    left: 24px !important;
+    color: var(--color-dark-brown);
 }
