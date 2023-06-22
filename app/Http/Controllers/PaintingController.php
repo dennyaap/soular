@@ -10,14 +10,15 @@ use App\Models\Plot;
 use App\Models\Style;
 use App\Models\Technique;
 use App\Models\Material;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PaintingController extends Controller
 {
     public function index() {
-        
-        $paintings = Painting::doesntHave('orderContent')->with('artist')->latest('created_at')->take(4)->get();
+        $basketPaintings = auth()->check() ? Basket::getBasket()->select('painting_id')->get() : [];
+        $paintings = Painting::doesntHave('orderContent')->with('artist')->whereNotIn('id', $basketPaintings)->latest('created_at')->take(4)->get();
         $plots = Plot::all();
 
         return view('main', compact('paintings', 'plots'));
@@ -44,12 +45,8 @@ class PaintingController extends Controller
         $limit = isset($parameters['limit']) ? $parameters['limit'] : 10;
         $offset = ($currentPage - 1) * $limit;
 
-        $basketPaintings = [];
-
-        if(auth()->check()) {
-            $basketPaintings = Basket::select('painting_id')->where('user_id', auth()->user()->id)->get();
-        }
-
+        $basketPaintings = auth()->check() ? Basket::getBasket()->select('painting_id')->get() : [];
+        
         $paintings = Painting::doesntHave('orderContent')->orderBy($sortBy, $typeSort)->with('artist', 'technique')->whereNotIn('id', $basketPaintings);
 
         if (!empty($parameters['stylesId'])) {
@@ -86,4 +83,5 @@ class PaintingController extends Controller
         
         return view('painting.index', compact('painting', 'otherPaintings', 'isBasket', 'isAuth'));
     }
+
 }
