@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             'patronymic'=> ['required', 'regex:/^[а-яё\s\-]+$/iu'],
             'phone'=> ['required'],
             'email'=> ['required', 'email', 'unique:users'],
-            'password'=> ['required', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/', 'confirmed'],
+            'password'=> ['required', 'regex:/^(?=.*[a-zA-Z])(?=.*\d).{8,}$/', 'confirmed'],
         ];
     }
 
