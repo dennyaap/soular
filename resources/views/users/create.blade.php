@@ -129,8 +129,9 @@
                                             @error('password')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
-                                            <div id="emailHelp" class="form-text">Не менее 8 символов.</div>
-
+                                            <div id="passwordHelp" class="form-text">Не менее 8 латинских символов, хотя
+                                                бы 1
+                                                цифра</div>
                                         </div>
                                     </div>
 
@@ -159,7 +160,8 @@
                                 </form>
 
                             </div>
-                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                            <div
+                                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2 d-none d-md-none d-lg-block">
 
                                 <img src="{{ asset('images/paintings/p6.jpg') }}" class="img-fluid w-100 painting-img"
                                     alt="painting">
