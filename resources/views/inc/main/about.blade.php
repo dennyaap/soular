@@ -1,9 +1,9 @@
 <section class="about" id="about">
     <div class="about__container">
         <div class="about__content">
-            <div class="about__picture element-animation" id="about__picture-1"></div>
+            <div class="about__picture element-animation d-none d-lg-block" id="about__picture-1"></div>
 
-            <div class="about__picture element-animation" id="about__picture-2"></div>
+            <div class="about__picture element-animation d-none d-lg-block" id="about__picture-2"></div>
 
             <h1 class="section__title">
                 <span class="bold-font">БУДЬ АУНТЕНТИЧНЫМ</span>, покупая оригинальное!

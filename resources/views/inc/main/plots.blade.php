@@ -1,8 +1,8 @@
 <section class="plots">
     <div class="plots__container">
-        <div class="row row-cols-1 row-cols-md-3 g-5">
+        <div class="row row-cols-1 row-cols-lg-3 g-5">
             @foreach($plots as $index => $plot)
-            <div class="{{ $index != 2 ? 'col-sm-3' : 'col-sm-6' }} element-animation">
+            <div class="{{ $index != 2 ? 'col-lg-3' : 'col-lg-6' }} element-animation">
                 <div class="card border-0">
                     <img src="{{ asset('storage/plots/' . $plot->image) }}" class="card-img-top"
                         alt="{{ $plot->name }}">

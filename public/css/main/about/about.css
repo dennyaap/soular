@@ -94,3 +94,9 @@
     width: 260px;
     height: 260px;
 }
+
+@media screen and (max-width: 800px) {
+    .about__content {
+        width: 100%;
+    }
+}

@@ -13,11 +13,12 @@
                     <h1 class="section__description-title">Недавно добавленные</h1>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-4 g-5 arts__container d-flex align-items-end">
+            <div class="row row-cols-1 row-cols-lg-4 g-5 arts__container d-flex align-items-end">
                 @foreach($paintings as $key => $painting)
                 <div class="col element-animation">
                     <div class="card border-0">
-                        <img src="{{ url('storage/paintings/'. $painting->image) }}" alt="{{ $painting->title }}">
+                        <img src="{{ url('storage/paintings/'. $painting->image) }}" alt="{{ $painting->title }}"
+                            class="card-img-top">
                         <div class="art__card-body">
                             <div class="art__card-container">
                                 <p class="card-title art__card-artist">{{ $painting->artist->name}}</p>

@@ -53,3 +53,29 @@
 .header__footer {
     margin-top: 120px;
 }
+
+@media screen and (max-width: 1050px) {
+    .header__title {
+        font-size: 80px;
+    }
+    .header__title::before {
+        content: url("../../../images/brush.png");
+        position: absolute;
+        z-index: -1;
+        text-align: center;
+        width: 100%;
+        top: -100%;
+    }
+}
+
+@media screen and (max-width: 789px) {
+    .header__title {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .header__title {
+        font-size: 50px;
+    }
+}

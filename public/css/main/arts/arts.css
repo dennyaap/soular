@@ -1,25 +1,3 @@
-/* .section__container {
-    font-family: "Arsenica";
-    font-weight: 300;
-    font-style: italic;
-
-    display: flex;
-    flex-direction: column;
-    gap: 65px;
-    justify-content: center;
-    align-items: center;
-}
-
-.section__content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 700px;
-    align-items: center;
-    gap: 50px;
-    position: relative;
-} */
-
 .art__card-body {
     position: relative;
     color: #fff;
@@ -84,4 +62,14 @@
 
 .arts__btn-more {
     margin-bottom: 70px;
+}
+
+@media screen and (max-width: 1000px) {
+    .art__card-container {
+        top: -142px;
+    }
+
+    .arts__footer {
+        height: 650px;
+    }
 }
